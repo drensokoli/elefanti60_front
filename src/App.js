@@ -12,7 +12,7 @@ function App() {
 
   
   useEffect(() => {
-    axios.get('https://localhost:44391/api/Product/1')
+    axios.get('https://localhost:44391/api/Product')
     .then((response: AxiosResponse<any>) => {
       console.log(response.data);
     })
@@ -21,9 +21,9 @@ function App() {
 
    return(
     <>
-     test
-     test2
-     test3
+      <h1>
+        Test
+      </h1>
     </>
    )
 }
