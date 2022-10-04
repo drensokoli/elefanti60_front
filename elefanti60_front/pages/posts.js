@@ -1,19 +1,28 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import SinglePost from '../components/SinglePost';
 
 export const getServerSideProps = async () => {
 
   const postsRes = await fetch("https://jsonplaceholder.typicode.com/posts");
   const postsData = await postsRes.json();
+  console.log(postsData);
+
   return{
     props: {
-      postsData,
+     postsData,
     },
   };
 }
 
-export default function Home(props) {
+export default function Posts({ postsData }) {
+  
+  const allPosts = postsData.map(p => <div><SinglePost 
+    title = {p.title}  
+    desc = {p.body} 
+    id = {p.id}/>
+    </div>)
 
   return (
     <div className={styles.container}>
@@ -23,7 +32,9 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        {allPosts}
+      </main>
 
     </div>
   )
