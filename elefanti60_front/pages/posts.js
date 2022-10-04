@@ -18,11 +18,11 @@ export const getServerSideProps = async () => {
 
 export default function Posts({ postsData }) {
   
-  const allPosts = postsData.map(p => <div><SinglePost 
+  const allPosts = postsData.map((p) => (<div key = {p.id}><SinglePost 
     title = {p.title}  
-    desc = {p.body} 
+    desc = {p.body}
     id = {p.id}/>
-    </div>)
+    </div>));
 
   return (
     <div className={styles.container}>
