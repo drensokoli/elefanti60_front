@@ -6,7 +6,6 @@ export const getServerSideProps = async () => {
 
   const postsRes = await fetch("https://jsonplaceholder.typicode.com/posts");
   const postsData = await postsRes.json();
-  console.log(1);
   return{
     props: {
       postsData,
@@ -24,8 +23,7 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>posts
-      </main>
+      <main className={styles.main}></main>
 
     </div>
   )

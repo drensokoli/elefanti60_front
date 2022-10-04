@@ -21,8 +21,9 @@ export default function Posts({ postsData }) {
   const allPosts = postsData.map(p => <div><SinglePost 
     title = {p.title}  
     desc = {p.body} 
-    id = {p.id}/></div>)
-    
+    id = {p.id}/>
+    </div>)
+
   return (
     <div className={styles.container}>
       <Head>
