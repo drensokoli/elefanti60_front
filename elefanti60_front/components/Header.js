@@ -6,7 +6,7 @@ export default function header() {
     <header>
     <nav className='flex h-12 items-center justify-between shadow-md px-4'>
        <Link href="/" >
-        <a className='text-lg font-bold'>Elefanti 60</a>
+        <a className='text-lg font-bold'>Elefanti60</a>
        </Link>
        
        <div>

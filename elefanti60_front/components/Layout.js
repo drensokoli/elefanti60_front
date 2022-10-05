@@ -7,7 +7,7 @@ export default function Layout({title, children}) {
   return (
     <>        
         <Head>
-            <title>{title ? title + ' - Elefanti 60' : 'Elefanti 60'}</title>
+            <title>{title ? title + ' - Elefanti60' : 'Elefanti60'}</title>
             <meta name="description" content="Ecommerce website" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
@@ -19,7 +19,6 @@ export default function Layout({title, children}) {
             <footer className='flex justify-center items-center h-10 shadow-inner'>
             </footer>
         </div>
-
     </>
   )
 }
