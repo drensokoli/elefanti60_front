@@ -5,7 +5,7 @@ import React from 'react'
 export default function ProductItem({product}) {
   return (
     <div className='card'>
-        <Link href={`/product/${product.slug}`}>
+        <Link href={`/product/${product.path}`}>
             <a>
                 <img src = {product.image}
                      alt = {product.name}
@@ -13,14 +13,17 @@ export default function ProductItem({product}) {
                 </img>
             </a>
         </Link>
-
-        <div className='flex flex-col intems-center justify-center'>
-            <Link>
+        <div className='flex flex-col intems-center justify-center p-5'>
+            <Link href={`/product/${product.path}`}>
              <a>
                <h2 className='text-lg'>{product.name}</h2>
              </a>
             </Link>
-            <p className=''>{product.brand}</p>
+            <p>{product.stock}</p>
+            <p>${product.price}</p>
+            <button className='primary-button' type="button">
+                Add to cart
+            </button>
         </div>
     </div>
   )

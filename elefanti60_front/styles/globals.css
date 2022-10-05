@@ -10,3 +10,8 @@
     margin:10px;
 
 }
+
+
+.card{
+    @apply mb-5 block
+}
