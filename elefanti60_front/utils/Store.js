@@ -13,6 +13,7 @@ export const Store = createContext();
 //   Posht kemi kriju nje funksion reducer qe kthen nje gjendje te re, 
 //   duke performu nje aksion ne gjendjen fillestare
 
+
   function reducer( state, action) {
     switch (action.type) {
         case 'CART_ADD_ITEM': {
@@ -32,4 +33,13 @@ export const Store = createContext();
     }
   }
 
+// case 'CART_ADD_ITEM' shton produktin e ri ne cart dhe nese produkti 
+// ekziston ne cartItem e perditesojme quantity duke perdor nje condition
+
+  export function StoreProvider({ children }) {
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const value = {state, dispatch};
+    return <Store.Provider value={value}>{children}</Store.Provider>;
+
+  }
   
