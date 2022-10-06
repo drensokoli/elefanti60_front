@@ -4,8 +4,13 @@ import styles from '../styles/Home.module.css'
 import SinglePost from '../components/SinglePost';
 
 export const getServerSideProps = async () => {
-
-  const productsRes = await fetch('https:/localhost:7277/api/products/');
+   
+  const https = require("https");
+  const myUrl = 'https:/localhost:7277/api/products/';
+  const agent = new https.Agent({
+  rejectUnauthorized: false
+   })
+  const productsRes = await fetch('https:/localhost:7277/api/products/', { agent });
   const productsData = await productsRes.json();
   console.log(productsData);
 

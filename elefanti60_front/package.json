@@ -1,8 +1,9 @@
 {
   "name": "elefanti60_front",
   "version": "0.1.0",
-  "private": true,
+  "private": true, 
   "NODE_TLS_REJECT_UNAUTHORIZED":"0",
+  
 
   "scripts": {
     "dev": "next dev",
