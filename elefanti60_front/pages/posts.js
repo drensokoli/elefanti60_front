@@ -5,22 +5,22 @@ import SinglePost from '../components/SinglePost';
 
 export const getServerSideProps = async () => {
 
-  const postsRes = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const postsData = await postsRes.json();
-  console.log(postsData);
+  const productsRes = await fetch('https:/localhost:7277/api/products/');
+  const productsData = await productsRes.json();
+  console.log(productsData);
 
   return{
     props: {
-     postsData,
+     productsData,
     },
   };
 }
 
-export default function Posts({ postsData }) {
+export default function Posts({ productsData }) {
   
-  const allPosts = postsData.map((p) => (<div key = {p.id}><SinglePost 
+  const allProducts = productsData.map((p) => (<div key = {p.id}><SinglePost 
     title = {p.title}  
-    desc = {p.body}
+    desc = {p.decsription}
     id = {p.id}/>
     </div>));
 
@@ -33,7 +33,7 @@ export default function Posts({ postsData }) {
       </Head>
 
       <main className={styles.main}>
-        {allPosts}
+        {allProducts}
       </main>
 
     </div>
