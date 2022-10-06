@@ -7,12 +7,29 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import { Store } from '../../utils/Store';
 
-export default function ProductScreen() {
+export const getServerSideProps = async () => {
+   
+    const https = require("https");
+    const myUrl = `https:/localhost:7277/api/products/`;
+    const agent = new https.Agent({rejectUnauthorized: false})
+    const productsRes = await fetch(myUrl, { agent });
+    const productsData = await productsRes.json();
+    console.log(productsData);
+  
+    return{
+      props: {
+       productsData,
+      },
+    };
+  }
+
+export default function ProductScreen({productsData}) {
+
     const {state, dispatch }= useContext(Store);
 
     const {query} = useRouter();
     const {path} = query;
-    const product = data.products.find( x => x.path === path);
+    const product = productsData.find( x => x.path === path);
     if(!product){
         return <div> Product Not Found</div>;
     }
@@ -28,14 +45,14 @@ export default function ProductScreen() {
     };
 
     return (
-        <Layout title={product.name}>            
-            <div className='py-2'>
+        <Layout title={product.title}>            
+           <div className='py-2'>
                 <Link href="/">Go back</Link>
             </div>
             <div className='grid md:grid-cols-4 md:gap-3'>
                 <div className='md:col-span-2'>
                     <Image
-                    src = {`/${product.image}`}
+                    src = '/images/telefon1.jpg'
                     alt = {product.name}
                     width = {640}
                     height = {640}
@@ -61,7 +78,7 @@ export default function ProductScreen() {
                                 <div>Status</div>
                                 <div>{product.stock > 0 ? 'In stock' : 'Unavailable'}</div>
                             </div>
-                            <button className='"bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l w-full' onClick={addToCartHandler}>Add to cart</button>
+                            <button className='"bg-red-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l w-full' onClick={addToCartHandler}>Add to cart</button>
                     </div> 
                 </div>
             </div>
