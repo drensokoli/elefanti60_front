@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const SinglePost = ({title, desc, id, category,price}) => {
+const SinglePost = ({title, desc, id, category, price}) => {
     return (
         <div className='card'>
         <Link href={`/product/${id}`}>
@@ -24,11 +24,6 @@ const SinglePost = ({title, desc, id, category,price}) => {
                 Add to cart
             </button>
         </div>
-    </div>
-    
-    /*<div className="post" id = {id}>
-       <h5>{title}</h5>
-       <p>{desc}</p>
-    </div>*/)
+    </div>)
 }
 export default SinglePost;
