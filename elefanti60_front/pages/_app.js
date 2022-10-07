@@ -1,11 +1,17 @@
 import '../styles/globals.css'
 import {StoreProvider} from '../utils/Store';
+import {CartContexts, CartProvider} from '../contexts/CartContexts'
 
 function MyApp({ Component, pageProps }) {
-  return ( 
-  <StoreProvider>
-    <Component {...pageProps} />
-    </StoreProvider>
+  return (
+    <CartProvider>
+      <StoreProvider>
+      <Component {...pageProps} />
+      </StoreProvider>
+      
+    </CartProvider>
+    
+  
   );
 }
 

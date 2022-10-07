@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useContext } from 'react';
 import { Store } from '../../utils/Store';
+import { CartContexts } from '../../contexts/CartContexts';
 
 export const getServerSideProps = async () => {
    
@@ -26,6 +27,7 @@ export const getServerSideProps = async () => {
 export default function ProductScreen({productsData}) {
 
     const {state, dispatch }= useContext(Store);
+    const {products, setProducts} = useContext(CartContexts);
 
     const {query} = useRouter();
     const {path} = query;
@@ -42,8 +44,14 @@ export default function ProductScreen({productsData}) {
             return ;
         }
         dispatch({type:'CART_ADD_ITEM', payload: { ...product, quantity }});
+        const arraCarts = []
+        arraCarts.push(product)
+        setProducts({...product, quantity})
     };
 
+
+    console.log(products, "Context products")
+    console.log(state, "STORE STATE")
     return (
         <Layout title={product.title}>            
            <div className='py-2'>

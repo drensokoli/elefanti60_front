@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
+import { CartContexts } from "../contexts/CartContexts";
 
 const SinglePost = ({title, desc, id, category, price}) => {
+    const {products, setProducts} = useContext(CartContexts);
+    console.log(products);
     return (
         <div className='card'>
         <Link href={`/product/${id}`}>
