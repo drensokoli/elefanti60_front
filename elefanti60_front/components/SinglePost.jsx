@@ -22,7 +22,7 @@ const SinglePost = ({title, desc, id, category, price}) => {
             </Link>
             <p>{desc}</p>
             <p>${category}</p>
-            <button className='primary-button' type="button">
+            <button className='primary-button' type="button" >
                 Add to cart
             </button>
         </div>

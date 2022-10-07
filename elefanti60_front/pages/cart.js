@@ -5,6 +5,22 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import Layout from '../components/Layout';
 
+export const getServerSideProps = async () => {
+   
+    const https = require("https");
+    const myUrl = `https:/localhost:7277/api/products/`;
+    const agent = new https.Agent({rejectUnauthorized: false})
+    const productsRes = await fetch(myUrl, { agent });
+    const productsData = await productsRes.json();
+    console.log(productsData);
+  
+    return{
+      props: {
+       productsData,
+      },
+    };
+  }
+
 
 export default function CartScreen() {
 
@@ -14,7 +30,7 @@ export default function CartScreen() {
     } = state;
 
     const removeItemHandler = (item) => {
-        dispatch9({ type: 'CART_REMOVE_ITEM', payload:item});
+        dispatch({ type: 'CART_REMOVE_ITEM', payload:item});
     }
 
     return (
@@ -41,18 +57,18 @@ export default function CartScreen() {
                                         {cartItems.map((item) => (
                                             <tr key={item.slug} className='border-b'>
                                                 <td>
-                                                    <Link href={`/product/${item.slug}`}>
+                                                    <Link href={`/productItems/${item.slug}`}>
                                                         <a className='flex items-center'>
-
-                                                        </a>
-                                                        <Image
+                                                        &nbsp;
+                                                        {item.name}
+                                                        {/* <Image
                                                             src={item.image}
                                                             alt={item.name}
                                                             width={50}
                                                             height={50}
-                                                        ></Image>
-                                                        &nbsp;
-                                                        {item.name}
+                                                        ></Image> */}
+                                                       
+                                                        </a>
                                                     </Link>
                                                 </td>
                                                 <td className='p-5 text-right'>{item.quantity}</td>
