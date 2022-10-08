@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useContext } from 'react';
 import Layout from '../components/Layout';
-
+import Router, { useRouter } from 'next/router';
 export const getServerSideProps = async () => {
    
     const https = require("https");
@@ -23,6 +23,7 @@ export const getServerSideProps = async () => {
 
 
 export default function CartScreen() {
+    const router = useRouter();
 
     const { state, dispatch } = useContext(Store);
     const {
@@ -49,7 +50,8 @@ export default function CartScreen() {
                                         <tr>
                                             <th className='px-5 text-left'>Item</th>
                                             <th className='p-5 text-right'>Quantity</th>
-                                            <th className='p-5 text-right'>Action</th>
+                                            <th className='p-5 text-right'>Price</th>
+                                            {/* <th className='p-5 text-right'>Action</th> */}
 
                                         </tr>
                                     </thead>
@@ -57,23 +59,16 @@ export default function CartScreen() {
                                         {cartItems.map((item) => (
                                             <tr key={item.slug} className='border-b'>
                                                 <td>
-                                                    <Link href={`/productItems/${item.slug}`}>
+                                                    <Link href={`/products/${item.slug}`}>
                                                         <a className='flex items-center'>
                                                         &nbsp;
-                                                        {item.name}
-                                                        {/* <Image
-                                                            src={item.image}
-                                                            alt={item.name}
-                                                            width={50}
-                                                            height={50}
-                                                        ></Image> */}
-                                                       
-                                                        </a>
+                                                        {item.name}</a>
                                                     </Link>
                                                 </td>
                                                 <td className='p-5 text-right'>{item.quantity}</td>
+                                                <td className='p-5 text-right'>${item.price}</td>
                                                 <td className='p-5 text-right'>
-                                                    <button onClick={() => removeItemHandler(item)}>Remove Item</button>
+                                                    <button className='bg-violet-600 text-white	rounded-md text-md py-1 px-3	' onClick={() => removeItemHandler(item)}>Remove Item</button>
                                                 </td>
 
                                             </tr>
@@ -83,9 +78,30 @@ export default function CartScreen() {
                                     </tbody>
                                 </table>
                             </div>
+                            <div className='card p-5'>
+                                                <ul>
+                                                    <li>
+                                                        <div classNAme='pb-3'>
+                                                            Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0 )}) : $
+                                                            {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                                                        </div>
+                                                    </li>
+                                                    <button onClick={() => router.push('/checkout')}
+                                                    className='primary-button w-full'>Check Out
+
+                                                    </button>
+                                                </ul>
+                            </div >
                         </div>
                     )
             }
         </Layout>
     )
 }
+
+{/* <Image
+                                                            src={item.image}
+                                                            alt={item.name}
+                                                            width={50}
+                                                            height={50}
+                                                        ></Image> */}

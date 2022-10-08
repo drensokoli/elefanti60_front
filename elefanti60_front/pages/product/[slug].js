@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../../components/Layout';
-import {useRouter} from 'next/router';
+import Router, {useRouter} from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContext } from 'react';
@@ -28,6 +28,7 @@ export default function ProductScreen({productsData}) {
     const {state, dispatch }= useContext(Store);
     const {products, setProducts} = useContext(CartContexts);
 
+    const router = useRouter();
     const {query} = useRouter();
     const {path} = query;
     const product = productsData.find( x => x.path === path);
@@ -43,8 +44,9 @@ export default function ProductScreen({productsData}) {
             return ;
         }
         dispatch({type:'CART_ADD_ITEM', payload: { ...product, quantity }});
-        const arraCarts = []
-        arraCarts.push(product)
+        router.push('/cart');
+        // const arraCarts = []
+        // arraCarts.push(product)
         setProducts({...product, quantity})
     };
 
