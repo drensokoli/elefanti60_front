@@ -34,6 +34,7 @@ export default function Home({productsData, categoriesData}) {
     title = {p.title}  
     desc = {p.description}
     id = {p.id}
+    image = {p.image}
     price = {p.price}
     stock = {p.stock}
     category = {p.category}/>
@@ -44,7 +45,6 @@ const allCategories = categoriesData.map((c) => (<div key = {c.id}><Category
   id = {c.id}/>
   </div>));
 
-    //console.log(categoriesData,"hello");
 
   return (
       <Layout title="Home Page">
