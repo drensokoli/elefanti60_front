@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import { CartContexts } from "../contexts/CartContexts";
 
-const SinglePost = ({title, desc, id, category, price}) => {
+const SinglePost = ({title, desc, id, price, image}) => {
     const {products, setProducts} = useContext(CartContexts);
     return (
         <div className='card'>
         <Link href={`/product/${id}`}>
             <a>
-                <img src = 'images/telefon1.jpg' //img src = {product.image} 
+                <img src = {image} 
                      alt = {title}
                      className = 'rounded shadow'>
                 </img>
@@ -21,7 +21,7 @@ const SinglePost = ({title, desc, id, category, price}) => {
              </a>
             </Link>
             <p>{desc}</p>
-            <p>${category}</p>
+            <p>${price}</p>
             <button className='primary-button' type="button">
                 Add to cart
             </button>

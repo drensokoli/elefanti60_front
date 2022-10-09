@@ -34,6 +34,7 @@ export default function Home({productsData, categoriesData}) {
     title = {p.title}  
     desc = {p.description}
     id = {p.id}
+    image = {p.image}
     price = {p.price}
     stock = {p.stock}
     category = {p.category}/>
@@ -44,14 +45,12 @@ const allCategories = categoriesData.map((c) => (<div key = {c.id}><Category
   id = {c.id}/>
   </div>));
 
-    //console.log(categoriesData,"hello");
 
   return (
       <Layout title="Home Page">
         <div className='flex flex-row w-full justify-around mb-3'>{allCategories}</div>
-        <div className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4'>
-        <div className='flex-row'>        
-        <div className='w-full'>{allProducts}</div></div>     
+        <div className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4'>              
+        {allProducts}    
         </div>
       </Layout>
   )
