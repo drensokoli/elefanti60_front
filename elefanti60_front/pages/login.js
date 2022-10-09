@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import Layout from '../components/Layout';
 
-export default function LoginScreen() {
+export default function SignUpScreen() {
   const name = useRef()
   const email = useRef()
   const password = useRef()
