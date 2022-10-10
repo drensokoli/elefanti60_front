@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Store } from '../utils/Store'
 import { useContext } from 'react'
+import DropdownMenuItem from './DropdownMenuItem'
 
 export default function Layout({title, children}) {
 
@@ -36,9 +37,13 @@ export default function Layout({title, children}) {
           )}
           </a>
         </Link>
-        <Link href="/login">
-          <a className='p-2'>Login</a>
-        </Link>
+        < DropdownMenuItem option='v'>
+          <p className='text-center'>My Order History</p>
+          <p className='text-center'>Log Out</p>
+          <p className='text-center'>Delete Account</p>
+        </DropdownMenuItem>
+      
+        
        </div>
     </nav>
     </header>
@@ -49,3 +54,7 @@ export default function Layout({title, children}) {
     </>
   )
 }
+
+{/* <Link href="/login">
+          <a className='p-2'>Login</a>
+        </Link> */}
