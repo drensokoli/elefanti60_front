@@ -1,43 +1,65 @@
 import React, { useRef } from 'react'
 import Layout from '../components/Layout';
 
-export default function SignUpScreen() {
-  const name = useRef()
-  const email = useRef()
+export default function LoginScreen() {
+  const username = useRef()
+ // const email = useRef()
   const password = useRef()
 
  const handleClick=()=>{
-  if(name.current.value&&email.current.value&&password.current.value)
+  if(username.current.value&&password.current.value)
   {
-    localStorage.setItem('name',name.current.value)
-    localStorage.setItem('email',email.current.value)
+    localStorage.setItem('username',username.current.value)
+   // localStorage.setItem('email',email.current.value)
     localStorage.setItem('password',password.current.value)    
-    localStorage.setItem('signUp',email.current.value)
-    alert('Account created sucessfully')
+    //localStorage.setItem('signUp',email.current.value)
 
- console.log(name,email,password)
-  }
+ console.log(username,password)
+  }}
   
+  const handleSubmit = async(event) => {
+    event.preventDefault()
 
- }
+    const data = {
+      username: event.target.username.value,
+      password: event.target.password.value
+    }
+
+    const jsonData = JSON.stringify(data);
+    //https://localhost:7277/ermira?password=1234567890
+    const endpoint = `https://localhost:7277/${event.target.username.value}?password=${event.target.password.value}`;
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: jsonData,
+    }
+    console.log(jsonData,"jsondataaaaaa")
+
+    const response = await fetch(endpoint, options);
+    const result = await response.json();
+    console.log(result);
+    alert(`Is this your full name: ${result}`)
+
+  }  
+ 
 
   return (
     <Layout title="Login" >
-      <div className='text-center'>
-        <div className= 'mt-24 '>
-          <div className='mb-2.5	'>
-            <input placeholder='Name' type='text' ref={name} />
+       <form onSubmit={handleSubmit}>
+          <div className='text-center'>
+            <div className= 'mt-24 '>
+              <div className='mb-2.5	'>
+                <input placeholder='Username' type='text' ref={username} id="username" name='username' />
+              </div>
+              <div className='mb-2.5'>
+                <input  placeholder='Password' type='password' ref={password} id="password" name='password'/>
+              </div>
+              <button className='h-1/3 w-1/5  bg-violet-600 text-white	rounded-md text-md py-1 px-3' onClick={handleClick}>Log in</button>
+            </div>
           </div>
-          <div className='mb-2.5	'>
-            <input placeholder='Email' type='email' ref={email} />
-          </div>
-          <div className='mb-2.5'>
-            <input placeholder='Password' type='password' ref={password} />
-          </div>
-          <button className='h-1/3 w-1/5  bg-violet-600 text-white	rounded-md text-md py-1 px-3' onClick={handleClick}>Sign Up</button>
-        </div>
-      </div>
-
+       </form>
     </Layout>
   )
 }

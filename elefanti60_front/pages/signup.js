@@ -20,8 +20,6 @@ export default function SignUpScreen() {
   const cardnumber = useRef()
 
 
-
-
  const handleClick=()=>{
   if(name.current.value&&lastname.current.value&&username.current.value&&email.current.value&&password.current.value&&adress.current.value&&cardnumber.current.value)
   {
