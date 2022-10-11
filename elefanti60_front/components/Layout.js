@@ -1,60 +1,43 @@
 import React from 'react'
 import Head from 'next/head'
+import { UilUser, UilShoppingCart } from '@iconscout/react-unicons'
 // import Header from './Header'
 import Link from 'next/link'
 import { Store } from '../utils/Store'
 import { useContext } from 'react'
 import DropdownMenuItem from './DropdownMenuItem'
+import { logo } from '../assets'
+import Navbar from './Navbar'
+import Footer from './Footer'
+import Category from './Category'
+import slide1 from '../assets/slide1.jpg'
+import slide2 from '../assets/slide2.jpg'
+import Image from 'next/image'
+import Carousel from './Carousel'
 
-export default function Layout({title, children}) {
 
-  const {state, dispatch} = useContext(Store);
+export default function Layout({ title, children }) {
+
+  const { state, dispatch } = useContext(Store);
   const { cart } = state;
   return (
-    <>        
-        <Head>
-            <title>{title ? title + ' - Elefanti60' : 'Elefanti60'}</title>
-            <meta name="description" content="Ecommerce website" />
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
+    <>
+      <Head>
+        <title>{title ? title + ' - Elefanti60' : 'Elefanti60'}</title>
+        <meta name="description" content="Ecommerce website" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-        <div className='flex min-h-screen flex-col justify-between'>
+      <div className='flex min-h-screen flex-col justify-between'>
 
         <header>
-    <nav className='flex h-12 items-center justify-between shadow-md px-4'>
-       <Link href="/" >
-        <a className='text-lg font-bold'>Elefanti60</a>
-       </Link>
-       
-       <div>
+          <Navbar />
+        </header>
+          <Carousel />
+        <main className='container m-auto mt-4 px-4 '>{children}</main>
 
-        <Link href = "/cart">
-          <a className='p-2 '>Cart
-          {cart.cartItems.length > 0 && (
-            <span className='ml-1 rounded-full bg-violet-600 px-2 py-1 text-xs font-bold text-white'>
-              {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-            </span>
-          )}
-          </a>
-        </Link>
-        < DropdownMenuItem option='v'>
-          <p className='text-center'>My Order History</p>
-          <p className='text-center'>Log Out</p>
-          <p className='text-center'>Delete Account</p>
-        </DropdownMenuItem>
-      
-        
-       </div>
-    </nav>
-    </header>
-            <main className='container m-auto mt-4 px-4'>{children}</main>
-            <footer className='flex justify-center items-center h-10 shadow-inner'>
-            </footer>
-        </div>
+        <Footer />
+      </div>
     </>
-  )
+  );
 }
-
-{/* <Link href="/login">
-          <a className='p-2'>Login</a>
-        </Link> */}

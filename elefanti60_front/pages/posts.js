@@ -33,11 +33,7 @@ export default function Posts({ productsData }) {
     </div>));
 
   return (
-
     {allProducts}
-      
-
-    
   )
 }
 

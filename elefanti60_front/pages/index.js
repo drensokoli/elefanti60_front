@@ -36,9 +36,11 @@ export default function Home({productsData, categoriesData}) {
     category = {p.category}/>
     </div>));
 
-const allCategories = categoriesData.map((c) => (<div key = {c.id}><Category
-  name = {c.name}  
-  id = {c.id}/>
+const allCategories = categoriesData.map((c) => (
+  <div key = {c.id}>
+    <Category
+      name = {c.name}  
+      id = {c.id}/>
   </div>));
 
 

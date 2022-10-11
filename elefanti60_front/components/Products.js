@@ -9,18 +9,20 @@ import React from 'react'
 
 export default function Products({ productsData }) {
   
-  const allProducts = productsData.map((p) => (<div key = {p.id}><SinglePost 
+  const allProducts = productsData.map((p) => (<div key = {p.id}>
+    <SinglePost 
     title = {p.title}  
     desc = {p.description}
     id = {p.id}
     price = {p.price}
     stock = {p.stock}
-    category = {p.category}/>
+    category = {p.category}
+    />
     </div>));
 
   return (
-    
-    {allProducts}
-    
+    <div className='fixed right-1/3'>
+      {allProducts}
+    </div>
   )
 }

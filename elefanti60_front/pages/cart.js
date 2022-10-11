@@ -120,10 +120,3 @@ export default function CartScreen({ productsData }) {
         </Layout>
     )
 }
-
-{/* <Image
-                                                            src={item.image}
-                                                            alt={item.name}
-                                                            width={50}
-                                                            height={50}
-                                                        ></Image> */}
