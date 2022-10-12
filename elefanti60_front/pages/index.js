@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import Products from '../components/Products';
 import SinglePost from '../components/SinglePost';
 import Category from '../components/Category';
+import Carousel from '../components/Carousel';
 
 export const getServerSideProps = async () => {
    
@@ -47,7 +48,9 @@ const allCategories = categoriesData.map((c) => (
   return (
       <Layout title="Home Page">
         <div className='flex flex-row w-full justify-around mb-3'>{allCategories}</div>
-        <div className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4'>              
+        <hr  class="border-1 border-blue-700"></hr>
+        <Carousel />
+        <div className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 mb-4'>              
         {allProducts}    
         </div>
       </Layout>

@@ -1,16 +1,17 @@
 import Link from 'next/link'
 import React from 'react'
-
+import slide1 from '../assets/slide1.jpg'
+import Image from 'next/image'
 
 export default function ProductItem({product}) {
   return (
     <div className='card'>
         <Link href={`/product/${product.path}`}>
             <a>
-                <img src = {product.image}
-                     alt = {product.name}
-                     className = 'rounded shadow'>
-                </img>
+              <Image 
+                src={slide1} 
+                alt="test"
+              />
             </a>
         </Link>
         <div className='flex flex-col intems-center justify-center p-5'>

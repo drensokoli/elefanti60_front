@@ -54,69 +54,83 @@ export default function CartScreen({ productsData }) {
 
     return (
         <Layout title="Shopping Cart">
-            <h1 clasName='mb-4 text-xl'>Shopping Cart</h1>
-            {
-                cartItems.length === 0 ?
-                    (<div>
-                        Cart is empty, <Link href="/">Go back</Link>
+      <div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-center row">
+                <div class="col-md-8">
+                    <div class="p-2">
+                        <h4>Shopping cart</h4>
+                        <div class="d-flex flex-row align-items-center pull-right"><span class="mr-1">Sort by:</span><span class="mr-1 font-weight-bold">Price</span><i class="fa fa-angle-down"></i></div>
                     </div>
-                    ) : (
-                        <div className='grid md:grid-cols-4 md:gap-5'>
-                            <div className='overflow-x-auto md:col-span-3'>
-                                <table className='min-w-full'>
-                                    <thead className='border-b'>
-                                        <tr>
-                                            <th className='px-5 text-left'>Item</th>
-                                            <th className='p-5 text-right'>Quantity</th>
-                                            <th className='p-5 text-right'>Price</th>
-                                            {/* <th className='p-5 text-right'>Action</th> */}
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {cartItems.map((item) => (
-                                            <tr key={item.slug} className='border-b'>
-                                                <td>
-                                                    <Link href={`/products/${item.slug}`}>
-                                                        <a className='flex items-center'>
-                                                            &nbsp;
-                                                            {item.name}</a>
-                                                    </Link>
-                                                </td>
-                                                <div className='flex'>
-                                                    <button onClick={decrementQuantity}>-</button>
-                                                    <td className='p-5 text-right'>${item.quantity}</td>
-                                                    <button onClick={incrementQuantity}>+</button>
-                                                </div>
-                                                <td className='p-5 text-right'>${item.price}</td>
-                                                <td className='p-5 text-right'>
-                                                    <button className='bg-violet-600 text-white	rounded-md text-md py-1 px-3	' onClick={() => removeItemHandler(item)}>Remove Item</button>
-                                                </td>
-
-                                            </tr>
-                                        )
-
-                                        )}
-                                    </tbody>
-                                </table>
+                    <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+                        <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">Basic T-shirt</span>
+                            <div class="d-flex flex-row product-desc">
+                                <div class="size mr-1"><span class="text-grey">Size:</span><span class="font-weight-bold">&nbsp;M</span></div>
+                                <div class="color"><span class="text-grey">Color:</span><span class="font-weight-bold">&nbsp;Grey</span></div>
                             </div>
-                            <div className='card p-5 drop-shadow-xl bg-violet-50'>
-                                <ul>
-                                    <li>
-                                        <div classNAme='pb-3'>
-                                            Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
-                                            {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
-                                        </div>
-                                    </li>
-                                    <button onClick={() => router.push('/checkout')}
-                                        className='primary-button w-full bg-violet-900 text-white rounded-md' >Check Out
-
-                                    </button>
-                                </ul>
-                            </div >
                         </div>
-                    )
-            }
+                        <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
+                            <h5 class="text-grey mt-1 mr-1 ml-1">2</h5><i class="fa fa-plus text-success"></i></div>
+                        <div>
+                            <h5 class="text-grey">$20.00</h5>
+                        </div>
+                        <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+                        <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">Basic T-shirt</span>
+                            <div class="d-flex flex-row product-desc">
+                                <div class="size mr-1"><span class="text-grey">Size:</span><span class="font-weight-bold">&nbsp;M</span></div>
+                                <div class="color"><span class="text-grey">Color:</span><span class="font-weight-bold">&nbsp;Grey</span></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
+                            <h5 class="text-grey mt-1 mr-1 ml-1">2</h5><i class="fa fa-plus text-success"></i></div>
+                        <div>
+                            <h5 class="text-grey">$20.00</h5>
+                        </div>
+                        <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+                      
+                        <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">Basic T-shirt</span>
+                            <div class="d-flex flex-row product-desc">
+                                <div class="size mr-1"><span class="text-grey">Size:</span><span class="font-weight-bold">&nbsp;M</span></div>
+                                <div class="color"><span class="text-grey">Color:</span><span class="font-weight-bold">&nbsp;Grey</span></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
+                            <h5 class="text-grey mt-1 mr-1 ml-1">2</h5><i class="fa fa-plus text-success"></i></div>
+                        <div>
+                            <h5 class="text-grey">$20.00</h5>
+                        </div>
+                        <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+                        <div class="mr-1"></div>
+                        <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">Basic T-shirt</span>
+                            <div class="d-flex flex-row product-desc">
+                                <div class="size mr-1"><span class="text-grey">Size:</span><span class="font-weight-bold">&nbsp;M</span></div>
+                                <div class="color"><span class="text-grey">Color:</span><span class="font-weight-bold">&nbsp;Grey</span></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
+                            <h5 class="text-grey mt-1 mr-1 ml-1">2</h5><i class="fa fa-plus text-success"></i></div>
+                        <div>
+                            <h5 class="text-grey">$20.00</h5>
+                        </div>
+                        <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><input type="text" class="form-control border-0 gift-card" placeholder="discount code/gift card"/><button class="btn btn-outline-warning btn-sm ml-2" type="button">Apply</button></div>
+                    <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Proceed to Pay</button></div>
+                </div>
+            </div>
+        </div>
         </Layout>
     )
 }
+
+{/* <Image
+                                                            src={item.image}
+                                                            alt={item.name}
+                                                            width={50}
+                                                            height={50}
+                                                        ></Image> */}

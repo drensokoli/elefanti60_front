@@ -21,7 +21,7 @@ export default function Products({ productsData }) {
     </div>));
 
   return (
-    <div className='fixed right-1/3'>
+    <div className='mb-4'>
       {allProducts}
     </div>
   )

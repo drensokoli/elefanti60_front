@@ -33,8 +33,7 @@ export default function Layout({ title, children }) {
         <header>
           <Navbar />
         </header>
-          <Carousel />
-        <main className='container m-auto mt-4 px-4 '>{children}</main>
+        <main className='container m-auto mt-4 px-4'>{children}</main>
 
         <Footer />
       </div>

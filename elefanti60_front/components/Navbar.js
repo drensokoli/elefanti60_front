@@ -8,7 +8,7 @@ import { useContext } from 'react'
 import DropdownMenuItem from './DropdownMenuItem'
 import logo from '../assets/logo.png'
 import Image from 'next/image'
-
+import { UilSearch } from '@iconscout/react-unicons'
 
 const Navbar = () => {
 
@@ -19,11 +19,16 @@ const Navbar = () => {
 
         <nav className='flex h-16 items-center justify-between px-4 shadow-lg'>
             <div className='ml-20'>
-                <Image
-                    src={logo}
-                    alt="Picture of the author"
-                />
-
+                <Link href={`/`} className='cursor-pointer'>
+                    <a>
+                    <Image
+                        src={logo}
+                        alt="Picture of the author"
+                        className='w-9'
+                    />
+                    </a>
+                </Link>
+                
             </div>
 
             <div className='w-1/3'>
@@ -34,7 +39,7 @@ const Navbar = () => {
                             <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </div>
                         <input type="search" id="default-search" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-30 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black" placeholder="Search for products" required="" />
-                        <button type="submit" class="text-blue-700 absolute border border-blue-700  right-2.5 bottom-2.5 bg-white hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                        <button type="submit" class="absolute right-2.5 bottom-2.5">{UilSearch}</button>
                     </div>
                 </form>
 
@@ -52,9 +57,12 @@ const Navbar = () => {
                         )}
                     </a>
                 </Link>
-                <div className=''>
-                    <UilUser />
-                </div>
+
+                <Link href="/signup">
+                <a>
+                <UilUser />
+                </a>
+                </Link>
 
                 {/* < DropdownMenuItem option='v'>
               <p className='text-center'>My Order History</p>
