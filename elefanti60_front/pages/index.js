@@ -51,7 +51,7 @@ export default function Home({ productsData, categoriesData }) {
       <hr class="border-1 border-blue-700"></hr>
       <Carousel />
       <div className='flex justify-center  mb-0'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 mb-5'>
+        <div className='grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4 mb-5'>
           {allProducts}
         </div>
       </div>
