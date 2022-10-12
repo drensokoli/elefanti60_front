@@ -1,14 +1,7 @@
 import React, { useRef } from 'react'
 import Layout from '../components/Layout';
 import { useState } from 'react';
-
-// export async function getServerSideProps(){
-//   return{
-//     props: {
-
-//     }
-//   }
-// }
+import { useRouter } from 'next/router';
 
 export default function SignUpScreen() {
   const name = useRef()
@@ -18,6 +11,7 @@ export default function SignUpScreen() {
   const password = useRef()
   const adress = useRef()
   const cardnumber = useRef()
+  const Router = useRouter()
 
 
  const handleClick=()=>{
@@ -32,7 +26,7 @@ export default function SignUpScreen() {
     localStorage.setItem('cardnumber',cardnumber.current.value)
 
     localStorage.setItem('signUp',email.current.value)
-    alert('Account created sucessfully')
+    //alert('Account created sucessfully')
 
  console.log(name,lastname,username,email,password,adress,cardnumber)
   }}
@@ -61,8 +55,18 @@ export default function SignUpScreen() {
     }
 
     const response = await fetch(endpoint, options);
-    const result = await response.json()
-    alert(`Is this your full name: ${result.data}`)
+    try
+    {
+      const result = await response.json();
+      console.log(result);
+      //alert("Signed up");
+      Router.push('http://localhost:3000/login')
+    }
+    catch(ex)
+    {
+      console.log(ex)
+      alert("That usename is unavailable");
+    }
 
   }  
 

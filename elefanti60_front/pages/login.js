@@ -1,10 +1,14 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Layout from '../components/Layout';
+import Home from '.';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function LoginScreen() {
   const username = useRef()
  // const email = useRef()
   const password = useRef()
+  const Router = useRouter()
 
  const handleClick=()=>{
   if(username.current.value&&password.current.value)
@@ -36,11 +40,21 @@ export default function LoginScreen() {
       body: jsonData,
     }
     console.log(jsonData,"jsondataaaaaa")
-
     const response = await fetch(endpoint, options);
-    const result = await response.json();
-    console.log(result);
-    alert(`Is this your full name: ${result}`)
+    //const result = await response.json();
+
+    try
+    {
+      const result = await response.json();
+      console.log(result);
+      localStorage.setItem('id',result)
+      Router.push('/')
+    }
+    catch(ex)
+    {
+      console.log(ex)
+      alert("Wrong username or password");
+    }
 
   }  
  
