@@ -1,20 +1,14 @@
-import React from 'react'
-import DropdownMenuItem from './DropdownMenuItem'
+import React, { useState } from 'react'
 
-export default function DropdownMenu() {
-    function DropdownMenuItem(props) {
-        return(
-            <a href='#' className='' >
-            {props.children}
-        </a>
-        )
-    }
+export default function DropdownMenu(props) {
+    const [open, setOpen] = useState(false);
+
   return (
-    <div>DropdownMenu</div>
+    <li className="list-none">
+        <a href='#' className='' onClick={() => setOpen(!open)}>
+            {props.option}
+        </a>
+        {open && props.children}
+    </li>
   )
 }
-
-
-{/* <p className='text-center'>My Order History</p>
-<p className='text-center'>Log Out</p>
-<p className='text-center'>Delete Account</p>  */}

@@ -5,7 +5,7 @@ import { UilUser, UilShoppingCart } from '@iconscout/react-unicons'
 import Link from 'next/link'
 import { Store } from '../utils/Store'
 import { useContext } from 'react'
-import DropdownMenuItem from './DropdownMenuItem'
+import DropdownMenu from './DropdownMenu'
 import logo from '../assets/logo.png'
 import Image from 'next/image'
 import { UilSearch } from '@iconscout/react-unicons'
@@ -58,17 +58,14 @@ const Navbar = () => {
                     </a>
                 </Link>
 
-                <Link href="/signup">
-                <a>
-                <UilUser />
-                </a>
-                </Link>
+             
 
-                {/* < DropdownMenuItem option='v'>
-              <p className='text-center'>My Order History</p>
-              <p className='text-center'>Log Out</p>
-              <p className='text-center'>Delete Account</p>
-            </DropdownMenuItem> */}
+                < DropdownMenu  option={<UilUser/>} className= 'absolute top-14 bottom-72'>
+                 <a className='h-14 flex text-center'>My Profile</a> <br/>
+              <a href='/login' className=' h-14 flex text-center'>My Order History</a>
+              <p className=' h-14 flex text-center'>Log Out</p>
+              {/* <p className='text-center'>Delete Account</p> */}
+            </DropdownMenu>
 
 
             </div>
@@ -77,3 +74,9 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
+{/* <Link href="/login">
+<a>
+<UilUser />
+</a>
+</Link> */}
