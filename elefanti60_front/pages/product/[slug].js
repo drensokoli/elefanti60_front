@@ -7,21 +7,23 @@ import { useContext } from 'react';
 import { Store } from '../../utils/Store';
 import { CartContexts } from '../../contexts/CartContexts';
 
-export const getServerSideProps = async () => {
-   
-    const https = require("https");
-    const myUrl = `https:/localhost:7277/api/products/`;
-    const agent = new https.Agent({rejectUnauthorized: false})
-    const productsRes = await fetch(myUrl, { agent });
-    const productsData = await productsRes.json();
-    console.log(productsData);
-  
-    return{
-      props: {
-       productsData,
-      },
-    };
-  }
+export const getServerSideProps = async (context) => {
+
+    const { params } = context;
+    const {slug} = params;
+
+      const https = require("https");
+      const myUrl = `https:/localhost:7277/api/products/${slug}`;
+      const agent = new https.Agent({rejectUnauthorized: false})
+      const productsRes = await fetch(myUrl, { agent });
+      const productsData = await productsRes.json();
+
+      return{
+        props: {
+         productsData,
+        },
+      };
+    }
 
 export default function ProductScreen({productsData}) {
 
@@ -31,7 +33,7 @@ export default function ProductScreen({productsData}) {
     const router = useRouter();
     const {query} = useRouter();
     const {path} = query;
-    const product = productsData.find( x => x.path === path);
+    const product = productsData
     if(!product){
         return <div> Product Not Found</div>;
     }
@@ -60,13 +62,7 @@ export default function ProductScreen({productsData}) {
             </div>
             <div className='grid md:grid-cols-4 md:gap-3'>
                 <div className='md:col-span-2'>
-                    <Image
-                    src = '/images/telefon1.jpg'
-                    alt = {product.name}
-                    width = {640}
-                    height = {640}
-                    layout = "responsive"
-                    ></Image>
+                   <img src={product.image}></img>
                 </div>
                 <div>
                     <ul>

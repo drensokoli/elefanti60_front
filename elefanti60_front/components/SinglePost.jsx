@@ -7,11 +7,12 @@ const SinglePost = ({ title, desc, id, price, image }) => {
     const { products, setProducts } = useContext(CartContexts);
     return (
 
-        <div class="flex flex-col max-w-sm bg-white rounded-lg border border-gray-200 shadow-md justify-items-center mb-5">
-            <div className='flex flex-col intems-center justify-center p-5 justify-items-center'>
+        <div class="flex h-96 flex-col max-w-sm bg-white rounded-lg border border-gray-200 shadow-md justify-items-center mb-5 pb-5 ">
+            <div className='flex flex-col items-center justify-center p-5 justify-items-center'>
                 <Link href={`/product/${id}`}>
-                    <a>
-                        <Image src={telefon} />
+                    <a className="h-40">
+                        <img src={image} alt="" />
+                        {/* <Image src={image} width={100} height={100} layout="responsive" /> */}
                     </a>
                 </Link>
             </div>
