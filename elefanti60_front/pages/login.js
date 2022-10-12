@@ -49,9 +49,10 @@ export default function LoginScreen() {
  
 
   return (
-    <Layout title="Login" >
+    <Layout title="Login">
+      <div className=' h-screen'>
       <div className='flex justify-center mt-10'>
-      <div class="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 ">
+      <div class="p-4 w-screen md:w-3/4 lg:w-1/2 bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 ">
             <form class="space-y-6" action="#">
             <Image src={logo} className="w-"/>
                 <div>
@@ -94,6 +95,7 @@ export default function LoginScreen() {
             </div>
           </div>
        </form> */}
+       </div>
     </Layout>
   )
 }
