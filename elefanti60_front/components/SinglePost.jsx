@@ -7,7 +7,7 @@ const SinglePost = ({ title, desc, id, price, image }) => {
     const { products, setProducts } = useContext(CartContexts);
     return (
 
-        <div class="flex flex-col max-w-sm bg-white rounded-lg border border-gray-200 shadow-md justify-items-center">
+        <div class="flex flex-col max-w-sm bg-white rounded-lg border border-gray-200 shadow-md justify-items-center mb-5">
             <div className='flex flex-col intems-center justify-center p-5 justify-items-center'>
                 <Link href={`/product/${id}`}>
                     <a>
