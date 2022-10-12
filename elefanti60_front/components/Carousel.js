@@ -2,25 +2,57 @@ import slide1 from '../assets/slide1.jpg'
 import slide2 from '../assets/slide2.jpg'
 import Image from 'next/image'
 import slide3 from '../assets/slide3.jpg'
+import Slider from 'react-slick'
 
 const Carousel = () => {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      };
     return (
-    
-        <div id="carouselExampleSlidesOnly" class="carousel slide relative mb-5" data-bs-ride="carousel">
-            <div class="carousel-inner relative w-full overflow-hidden">
-                <div class="carousel-item active relative float-left w-full">
-                    <Image src={slide1}
+
+        // <div id="carouselExampleSlidesOnly" class="carousel slide relative mb-5" data-bs-ride="carousel">
+        //     <div class="carousel-inner relative w-full overflow-hidden">
+        //         <div class="carousel-item active relative float-left w-full">
+        //             <Image src={slide1}
+        //                 class="block w-full" />
+        //         </div>
+        //         <div class="carousel-item active relative float-left w-full">
+        //             <Image src={slide2}
+        //                 class="block w-full" />
+        //         </div>
+        //         <div class="carousel-item active relative float-left w-full">
+        //             <Image src={slide3}
+        //                 class="block w-full" />
+        //         </div>
+        //     </div>
+        // </div>
+
+        <div>
+            <Slider {...settings}>
+                <div>
+                <Image src={slide1}
                         class="block w-full" />
                 </div>
-                <div class="carousel-item active relative float-left w-full">
-                    <Image src={slide2}
+                <div>   <Image src={slide2}
                         class="block w-full" />
                 </div>
-                <div class="carousel-item active relative float-left w-full">
-                    <Image src={slide3}
+                <div>   <Image src={slide3}
                         class="block w-full" />
                 </div>
-            </div>
+                <div>   <Image src={slide1}
+                        class="block w-full" />
+                </div>
+                <div>   <Image src={slide2}
+                        class="block w-full" />
+                </div>
+                <div>   <Image src={slide3}
+                        class="block w-full" />
+                </div>
+            </Slider>
         </div>
 
         // <div id="animation-carousel" class="relative" data-carousel="">
