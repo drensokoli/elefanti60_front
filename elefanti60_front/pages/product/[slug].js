@@ -1,40 +1,41 @@
 import React from 'react';
 import Layout from '../../components/Layout';
-import Router, {useRouter} from 'next/router';
+import Router, { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContext } from 'react';
 import { Store } from '../../utils/Store';
 import { CartContexts } from '../../contexts/CartContexts';
+import Category from '../../components/Category';
 
 export const getServerSideProps = async (context) => {
 
     const { params } = context;
-    const {slug} = params;
+    const { slug } = params;
 
-      const https = require("https");
-      const myUrl = `https:/localhost:7277/api/products/${slug}`;
-      const agent = new https.Agent({rejectUnauthorized: false})
-      const productsRes = await fetch(myUrl, { agent });
-      const productsData = await productsRes.json();
+    const https = require("https");
+    const myUrl = `https:/localhost:7277/api/products/${slug}`;
+    const agent = new https.Agent({ rejectUnauthorized: false })
+    const productsRes = await fetch(myUrl, { agent });
+    const productsData = await productsRes.json();
 
-      return{
+    return {
         props: {
-         productsData,
+            productsData,
         },
-      };
-    }
+    };
+}
 
-export default function ProductScreen({productsData}) {
+export default function ProductScreen({ productsData }) {
 
-    const {state, dispatch }= useContext(Store);
-    const {products, setProducts} = useContext(CartContexts);
+    const { state, dispatch } = useContext(Store);
+    const { products, setProducts } = useContext(CartContexts);
 
     const router = useRouter();
-    const {query} = useRouter();
-    const {path} = query;
+    const { query } = useRouter();
+    const { path } = query;
     const product = productsData
-    if(!product){
+    if (!product) {
         return <div> Product Not Found</div>;
     }
     const addToCartHandler = () => {
@@ -43,48 +44,57 @@ export default function ProductScreen({productsData}) {
 
         if (product.stock < quantity) {
             alert('Sorry, Product is out of stock')
-            return ;
+            return;
         }
-        dispatch({type:'CART_ADD_ITEM', payload: { ...product, quantity }});
+        dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
         router.push('/cart');
-        // const arraCarts = []
-        // arraCarts.push(product)
-        setProducts({...product, quantity})
+        setProducts({ ...product, quantity })
     };
 
 
     console.log(products, "Context products")
     console.log(state, "STORE STATE")
     return (
-        <Layout title={product.title}>            
-           <div className='py-2'>
-                <Link href="/">Go back</Link>
-            </div>
-            <div className='grid md:grid-cols-4 md:gap-3'>
-                <div className='md:col-span-2'>
-                   <img src={product.image}></img>
+
+        <Layout title={product.title}>
+
+            <div className='grid md:grid-cols-2 md:gap-3 mt-10'>
+                <div className='md:col-span-1 h-96 w-1000'>
+                    <img src={product.image} className='w-[400px] items-center'></img>
                 </div>
-                <div>
+                <div className='mt-10'>
                     <ul>
                         <li>
                             <h1 className='text-lg'>{product.name}</h1>
                         </li>
-                        <li>Description: {product.description}</li>
+                        <li className='text-lg'>{product.description}</li>
                         <li>Category: {product.category}</li>
                     </ul>
-                </div>
-                <div>
-                    <div className='card content-center p-5'>
-                            <div className='mb-2 flex justify-between '>
-                                <div>Price</div>
-                                <div>${product.price}</div>
+                    <div className='card mt-40'>
+
+                        <div className='mb-2 flex justify-between'>
+                            <div>Price</div>
+                            <div>${product.price}</div>
+                        </div>
+                        <div className='mb-2 flex justify-between'>
+                            <div>Stock</div>
+                            <div>{product.stock}</div>
+                        </div>
+                        <div className='mb-2 flex justify-between'>
+                            <div>Quantity</div>
+                            <div className='input-group flex justify-between'>
+                                <button type='button'>-</button>
+                                <div>1</div>
+                                <button type='button'>+</button>
                             </div>
-                            <div className='mb-2 flex justify-between'>
-                                <div>Status</div>
-                                <div>{product.stock > 0 ? 'In stock' : 'Unavailable'}</div>
-                            </div>
-                            <button className='"bg-red-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l w-full' onClick={addToCartHandler}>Add to cart</button>
-                    </div> 
+                            {/* <input value={1} className='w-6 text-right' ></input> */}
+                        </div>
+                        <div className='mb-2 flex justify-between'>
+                            <div>Total</div>
+                            <div>${product.price}</div>
+                        </div>
+                        <button className='text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-full' onClick={addToCartHandler}>Add to cart</button>
+                    </div>
                 </div>
             </div>
         </Layout>

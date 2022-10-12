@@ -47,11 +47,11 @@ export default function Home({ productsData, categoriesData }) {
 
   return (
     <Layout title="Home Page">
-      <div className='flex flex-row w-full justify-around mb-3'>{allCategories}</div>
+      <div className='flex flex-row w-full md:justify-around justify-start mb-3 overflow-x-auto'>{allCategories}</div>
       <hr class="border-1 border-blue-700"></hr>
       <Carousel />
-      <div className='flex justify-center'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-4'>
+      <div className='flex justify-center  mb-0'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 mb-5'>
           {allProducts}
         </div>
       </div>

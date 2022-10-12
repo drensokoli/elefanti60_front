@@ -2,11 +2,9 @@ import React from 'react'
 import Link from 'next/link';
 
 const Category = ({ id, name }) => {
+  
   return (
     <>
-
-
-
       <Link href={`/category/${name}`}>
       <li class="nav-item flex-grow text-center list-none" role="presentation">
           <a href="" class="
