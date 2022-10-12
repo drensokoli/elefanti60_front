@@ -50,7 +50,7 @@ export default function LoginScreen() {
 
   return (
     <Layout title="Login" >
-
+      <div className='flex justify-center mt-10'>
       <div class="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 ">
             <form class="space-y-6" action="#">
             <Image src={logo} className="w-"/>
@@ -80,7 +80,7 @@ export default function LoginScreen() {
             </form>
         </div>
       
-
+        </div>
        {/* <form onSubmit={handleSubmit}>
           <div className='text-center'>
             <div className= 'mt-24 '>
