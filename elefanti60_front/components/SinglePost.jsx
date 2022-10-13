@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CartContexts } from "../contexts/CartContexts";
 import Image from "next/image";
 import telefon from '../assets/telefon.jpg'
-const SinglePost = ({ title, desc, id, price, image }) => {
+const SinglePost = ({ title, desc, id, category, price, image }) => {
     const { products, setProducts } = useContext(CartContexts);
     return (
 
@@ -23,7 +23,7 @@ const SinglePost = ({ title, desc, id, price, image }) => {
                     </div>
 
                 </Link>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-500">{desc}</p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-500">{category}</p>
                 <button type="button" class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900">Add to Cart</button>
 
             </div>

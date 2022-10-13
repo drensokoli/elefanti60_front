@@ -58,7 +58,7 @@ const Navbar = () => {
                         </a>
                     </Link>
 
-                    <Link href="/signup">
+                    <Link href="/login">
                         <a>
                             <UilUser />
                         </a>
