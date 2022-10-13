@@ -3,11 +3,13 @@ import Layout from '../components/Layout';
 import Image from 'next/image';
 import logo from '../assets/logo.png'
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function LoginScreen() {
   const username = useRef()
   // const email = useRef()
   const password = useRef()
+  const Router = useRouter()
 
   const handleClick = () => {
     if (username.current.value && password.current.value) {
@@ -41,9 +43,22 @@ export default function LoginScreen() {
     console.log(jsonData, "jsondataaaaaa")
 
     const response = await fetch(endpoint, options);
-    const result = await response.json();
-    console.log(result);
-    alert(`Is this your full name: ${result}`)
+    //const result = await response.json();
+    // console.log(result);
+    // alert(`Is this your full name: ${result}`)
+
+    try
+    {
+      const result = await response.json();
+      console.log(result);
+      localStorage.setItem('id',result)
+      Router.push('/')
+    }
+    catch(ex)
+    {
+      console.log(ex)
+      alert("Wrong username or password");
+    }
 
   }
 
@@ -53,13 +68,13 @@ export default function LoginScreen() {
       <div className=' h-screen'>
         <div className='flex justify-center mt-10'>
           <div class="p-4 w-screen md:w-3/4 lg:w-1/2 bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 ">
-            <form class="space-y-6" action="#">
+            <form class="space-y-6" onSubmit={handleSubmit}>
               <div className="flex flex-row justify-center">
                 <Image src={logo} />
               </div>
               <div>
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@company.com" required="" />
+                <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
+                <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Username" required="" />
               </div>
               <div>
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your password</label>
