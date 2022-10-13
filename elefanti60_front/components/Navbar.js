@@ -19,7 +19,7 @@ const Navbar = () => {
 
         <nav className='h-auto items-center px-4 shadow-lg'>
             <div className='flex flex-row h-20 items-center px-4 shadow-lg md:justify-around justify-between'>
-                <div className='gap-10'>
+                <div className=''>
                     <Link href={`/`} className='cursor-pointer'>
                         <a>
                             <Image
@@ -45,10 +45,10 @@ const Navbar = () => {
 
                 </div>
 
-                <div className='flex justify-center items-center gap-10'  >
+                <div className='flex justify-center items-center sm:gap-10 gap-4'>
 
                     <Link href="/cart">
-                        <a className='p-2 '>
+                        <a className='p-2'>
                             <UilShoppingCart />
                             {cart.cartItems.length > 0 && (
                                 <span className='ml-1 rounded-full bg-violet-600 px-2 py-1 text-xs font-bold text-white'>
