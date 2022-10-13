@@ -58,32 +58,35 @@ export default function CartScreen({ productsData }) {
         <Layout title="Shopping Cart">
             <div class="container w-full h-screen mb-5">
 
-                <a href="#" class="flex flex-row justify-around h-52 items-center bg-white rounded-lg border shadow-md hover:bg-gray-100 mb-5 gap-48">
+                <a href="#" class="flex flex-row gap-20 justify-between px-5 h-52 items-center bg-white rounded-lg border shadow-md hover:bg-gray-100 mb-5">
                     <div>
-                        <Image class="object-cover h-48 w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={tv} />
+                        <Image class="object-cover" src={tv} />
                     </div>
-                    <div class="flex flex-col justify-between p-4 leading-normal">
+                    <div class="flex flex-col justify-between p-4 leading-normal w-1/2">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Noteworthy technology acquisitions</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Biggest enterprise technology</p>
                     </div>
+
+                    <div className=''>
+                        <div>$500</div>
+                    </div>
                     <div>
-                        <div className='mb-2 flex justify-between'>
-                            <div>Price</div>
-                            <div>$500</div>
-                        </div>
-                        <div className='mb-2 flex justify-between'>
-                            <div>Stock</div>
-                            <div>100</div>
-                        </div>
-                        <div className='mb-2 flex justify-between'>
-                            <div>Quantity</div>
-                            <div className='input-group flex justify-between'>
-                                <button type='button'>-</button>
-                                <div>1</div>
-                                <button type='button'>+</button>
-                            </div>
-                            {/* <input value={1} className='w-6 text-right' ></input> */}
-                        </div>
+
+                        <form className=''>
+                            <select className='h-10 w-12 font-normal text-xl'>
+                                <option value="javascript">1</option>
+                                <option value="php">2</option>
+                                <option value="java">3</option>
+                                <option value="golang">4</option>
+                                <option value="python">5</option>
+                                <option value="c#">6</option>
+                                <option value="C++">7</option>
+                                <option value="erlang">8</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div className=''>
+                        <div>$1500</div>
                     </div>
                 </a>
             </div>
