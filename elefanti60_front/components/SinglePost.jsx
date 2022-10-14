@@ -3,9 +3,13 @@ import Link from "next/link";
 import { CartContexts } from "../contexts/CartContexts";
 import Image from "next/image";
 import telefon from '../assets/telefon.jpg'
+
 const SinglePost = ({ title, desc, id, category, price, image }) => {
    // const { products, setProducts } = useContext(CartContexts);
     return (
+        
+<>
+
 
         <div class="flex h-[400px] w-70 flex-col max-w-sm bg-white rounded-lg border border-gray-200 shadow-md justify-items-center pb-5 ">
             <div className='flex flex-col items-center justify-center p-10 justify-items-center'>
@@ -28,7 +32,7 @@ const SinglePost = ({ title, desc, id, category, price, image }) => {
 
             </div>
         </div>
-
+</>
 
     )
 }

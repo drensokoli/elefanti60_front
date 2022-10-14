@@ -29,7 +29,7 @@ export const getServerSideProps = async (context) => {
 export default function ProductScreen({ productsData }) {
 
     const { state, dispatch } = useContext(Store);
-  //  const { products, setProducts } = useContext(CartContexts);
+    //  const { products, setProducts } = useContext(CartContexts);
 
     const router = useRouter();
     const { query } = useRouter();
@@ -57,48 +57,46 @@ export default function ProductScreen({ productsData }) {
     return (
 
         <Layout title={product.title}>
-
-            <div className='grid lg:grid-cols-2 mt-10'>
-                <div className='flex flex-row justify-center'>
-                    <img src={product.image} className='p-10'></img>
-                </div>
-                <div>
-                    <div className='flex flex-row justify-between'>
-                        <h5 class="mb-2 text-3xl md:text-5xl font-bold tracking-tight text-gray-900 ">{product.title}</h5>
-                        <div className='flex flex-col justify-end'>
-                            <h5 class="mb-2 text-2xl md:text-3xl font-medium tracking-tight text-gray-900 ">${product.price}</h5>
-                        </div>
+            <div className='border-2 h-fit my-20'>
+                <div className='flex flex-row justify-around'>
+                    <div className='flex flex-col py-20'>
+                        <img src={product.image} className='h-[300px]'></img>
                     </div>
-                    <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-500 ">{product.description}</h5>
+                    <div className='flex flex-col py-20 w-[500px]'>
+                        <div className='flex flex-row justify-between'>
+                            <h5 class="mb-2 text-3xl md:text-5xl font-bold tracking-tight text-blue-700 ">{product.title}</h5>
+                        </div>
+                        <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-500 ">{product.description}</h5>
 
-                    <div className='card mt-10'>
-                        <div className='mb-4 flex justify-between'>
+                        <div className='card mt-10'>
+                            <div className='mb-4 flex justify-between'>
 
-                            {/* <h5 class="text-2xl pt-1 font-medium tracking-tight text-gray-900">Quantity</h5> */}
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Quantity</h5>
-                            <div>
+                                {/* <h5 class="text-2xl pt-1 font-medium tracking-tight text-gray-900">Quantity</h5> */}
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Quantity</h5>
+                                <div>
 
-                                <form className=''>
-                                    <select className='h-10 w-12 font-normal text-xl'>
-                                        <option value="javascript">1</option>
-                                        <option value="php">2</option>
-                                        <option value="java">3</option>
-                                        <option value="golang">4</option>
-                                        <option value="python">5</option>
-                                        <option value="c#">6</option>
-                                        <option value="C++">7</option>
-                                        <option value="erlang">8</option>
-                                    </select>
-                                </form>
+                                    <form className=''>
+                                        <select className='h-10 w-12 font-normal text-xl'>
+                                            <option value="javascript">1</option>
+                                            <option value="php">2</option>
+                                            <option value="java">3</option>
+                                            <option value="golang">4</option>
+                                            <option value="python">5</option>
+                                            <option value="c#">6</option>
+                                            <option value="C++">7</option>
+                                            <option value="erlang">8</option>
+                                        </select>
+                                    </form>
+                                </div>
+
                             </div>
 
+                            <div className='mb-2 flex justify-between'>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Total</h5>
+                                <h5 class="mb-2 text-4xl font-medium tracking-tight text-gray-900">${product.price}</h5>
+                            </div>
+                            <button className='text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-full' onClick={addToCartHandler}>Add to cart</button>
                         </div>
-
-                        <div className='mb-2 flex justify-between'>
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Total</h5>
-                            <h5 class="mb-2 text-4xl font-medium tracking-tight text-gray-900">${product.price}</h5>
-                        </div>
-                        <button className='text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-full' onClick={addToCartHandler}>Add to cart</button>
                     </div>
                 </div>
             </div>

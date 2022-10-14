@@ -1,106 +1,65 @@
-import React from 'react'
-import { Store } from '../utils/Store';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useContext } from 'react';
+import Head from 'next/head'
+import Image from 'next/image'
 import Layout from '../components/Layout';
-import Router, { useRouter } from 'next/router';
-import SinglePost from '../components/SinglePost';
-import tv from "../assets/tv.jpg"
-import { CartContexts } from '../contexts/CartContexts';
+import Products from '../components/Products';
+import CartItem from '../components/CartItem';
+import Category from '../components/Category';
+import Carousel from '../components/Carousel';
+import { UserInfoScreen } from './userinfo';
 
 export const getServerSideProps = async () => {
 
     const https = require("https");
-    const myUrl = `https:/localhost:7277/api/products/`;
     const agent = new https.Agent({ rejectUnauthorized: false })
-    const productsRes = await fetch(myUrl, { agent });
+    const productsRes = await fetch('https:/localhost:7277/api/products/', { agent });
     const productsData = await productsRes.json();
-    console.log(productsData);
+    const categoriesRes = await fetch('https://localhost:7277/api/Categories', { agent });
+    const categoriesData = await categoriesRes.json();
+
 
     return {
         props: {
             productsData,
+            categoriesData,
         },
     };
 }
 
 
-export default function CartScreen({ productsData }) {
-    const router = useRouter();
+export default function Home({ productsData, categoriesData }) {
 
-   const id = useContext(CartContexts);
-   console.log(id, "idididid");
-
-    const allProducts = productsData.map((p) => (<div key={p.id}><SinglePost
-        title={p.title}
-        desc={p.description}
-        id={p.id}
-        price={p.price}
-        stock={p.stock}
-        category={p.category} />
+    const allProducts = productsData.map((p) => (<div key={p.id}>
+        <CartItem
+            title={p.title}
+            desc={p.description}
+            id={p.id}
+            image={p.image}
+            price={p.price}
+            stock={p.stock}
+            category={p.category} />
     </div>));
 
+    const allCategories = categoriesData.map((c) => (
+        <div key={c.id}>
+            <Category
+                name={c.name}
+                id={c.id} />
+        </div>));
 
-
-
-    const { state, dispatch } = useContext(Store);
-    const {
-        cart: { cartItems },
-    } = state;
-
-
-    const removeItemHandler = (item) => {
-        dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
-    }
-
-    const updateCartHandler = () => {
-
-    }
 
     return (
-        <Layout title="Shopping Cart">
-            <div class="container w-full h-screen mb-5">
-
-                <a href="#" class="flex flex-row gap-20 justify-between px-5 h-52 items-center bg-white rounded-lg border shadow-md hover:bg-gray-100 mb-5">
-                    <div>
-                        <Image class="object-cover" src={tv} />
-                    </div>
-                    <div class="flex flex-col justify-between p-4 leading-normal w-1/2">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Noteworthy technology acquisitions</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Biggest enterprise technology</p>
-                    </div>
-
-                    <div className=''>
-                        <div>$500</div>
-                    </div>
-                    <div>
-
-                        <form className=''>
-                            <select className='h-10 w-12 font-normal text-xl'>
-                                <option value="javascript">1</option>
-                                <option value="php">2</option>
-                                <option value="java">3</option>
-                                <option value="golang">4</option>
-                                <option value="python">5</option>
-                                <option value="c#">6</option>
-                                <option value="C++">7</option>
-                                <option value="erlang">8</option>
-                            </select>
-                        </form>
-                    </div>
-                    <div className=''>
-                        <div>$1500</div>
-                    </div>
-                </a>
+        <Layout title="Home Page">
+            <div className='flex flex-col justify-start gap-8 mt-5'>
+                <h1 className="text-3xl text-blue-700 font-semibold">Your cart:</h1>
+                <div className='flex flex-col justify-center items-center gap-5 mb-5'>
+                    {allProducts}
+                </div>
+            <div className='flex flex-col justify-end items-center gap-5 mb-5 '>
+                <h1 className='text-2xl font-semibold'>Total: 1000$</h1>
+                <button type="button" class="text-white w-[250px] sm:w-[500px] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-6 py-3.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Checkout</button>
             </div>
-        </Layout>
+            </div>
+
+        </Layout >
     )
 }
-
-{/* <Image
-                                                            src={item.image}
-                                                            alt={item.name}
-                                                            width={50}
-                                                            height={50}
-                                                        ></Image> */}
