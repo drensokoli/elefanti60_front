@@ -29,7 +29,7 @@ export const getServerSideProps = async (context) => {
 export default function ProductScreen({ productsData }) {
 
     const { state, dispatch } = useContext(Store);
-    const { products, setProducts } = useContext(CartContexts);
+  //  const { products, setProducts } = useContext(CartContexts);
 
     const router = useRouter();
     const { query } = useRouter();
@@ -52,7 +52,7 @@ export default function ProductScreen({ productsData }) {
     };
 
 
-    console.log(products, "Context products")
+    //console.log(products, "Context products")
     console.log(state, "STORE STATE")
     return (
 
