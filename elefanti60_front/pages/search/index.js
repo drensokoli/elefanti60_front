@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../../components/Layout'
 import data from '../../utils/data';
-import {useRouter} from 'next/router';
+import Router, {useRouter} from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import SinglePost from '../../components/SinglePost';
@@ -47,7 +47,9 @@ export async function getServerSideProps(context) {
       </div>));
 
 
-
+    if(!productsData){
+      Router.push("localhost:3000");
+    }else{
     return (       
       <Layout title="Home Page">
       <div className='flex flex-row w-full md:justify-around justify-start mb-3 overflow-x-auto'>{allCategories}</div>
@@ -58,5 +60,5 @@ export async function getServerSideProps(context) {
         </div>
       </div>
     </Layout >
-    )
+    )}
 }
