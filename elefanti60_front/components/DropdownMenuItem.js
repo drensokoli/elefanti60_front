@@ -5,30 +5,11 @@ export default function DropdownMenuItem(props) {
 
   return (
     <li className='list-none'>
-      <a href='#' className=' ' onClick={() => setOpen(!open)}>
-        {props.option}
-      </a>
-      <div className="dropdown-items absolute	">{open && props.children}</div>
+        <a href='#' className='' onClick={() => setOpen(!open)}>
+            {props.option}
+        </a>
+        <div className="dropdown-items absolute	">{open && props.children}</div>
     </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   )
 }

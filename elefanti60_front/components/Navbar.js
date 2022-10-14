@@ -1,7 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 import { UilUser, UilShoppingCart } from '@iconscout/react-unicons'
-// import Header from './Header'
 import Link from 'next/link'
 import { Store } from '../utils/Store'
 import { useContext } from 'react'
@@ -64,6 +63,7 @@ const Navbar = () => {
 
                         </div>
                         
+                        
                     </DropdownMenuItem>
 
                 </div>
@@ -86,3 +86,9 @@ const Navbar = () => {
 
 export default Navbar;
 
+
+// <a href='/userinfo' className='text-center'>My Profile</a>
+// <p className='text-center'>My Order History</p>
+// <p className='text-center'>Log Out</p>
+// <p className='text-center'>Delete Account</p>
+// >>>>>>> 55ca8710159fb7fb6be1fe64bed1e7e291bfb1b9
