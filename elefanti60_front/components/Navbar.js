@@ -81,12 +81,12 @@ const Navbar = () => {
                             )}
                         </a>
                     </Link>
-
-                    <Link href="/login">
-                        <a>
-                            <UilUser />
-                        </a>
-                    </Link> 
+                    <DropdownMenuItem option={<UilUser />}>
+                        <a href='/userinfo' className='text-center'>My Profile</a>
+                        <p className='text-center'>My Order History</p>
+                        <p className='text-center'>Log Out</p>
+                        <p className='text-center'>Delete Account</p>
+                    </DropdownMenuItem>
 
                 </div>
             </div>
@@ -109,3 +109,4 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
