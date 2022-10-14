@@ -57,12 +57,14 @@ const Navbar = () => {
                             )}
                         </a>
                     </Link>
+                    <DropdownMenuItem option={<UilUser />}>
+                        <div className='relative l-20 z-10 w-30 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600'>
+                        <a href='/userinfo' className='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' >My Profile</a>
+                        <p className='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-whiter'>My Order History</p>
 
-                    <Link href="/login">
-                        <a>
-                            <UilUser />
-                        </a>
-                    </Link> 
+                        </div>
+                        
+                    </DropdownMenuItem>
 
                 </div>
             </div>
@@ -83,3 +85,4 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
