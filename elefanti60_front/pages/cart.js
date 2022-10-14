@@ -7,6 +7,7 @@ import Layout from '../components/Layout';
 import Router, { useRouter } from 'next/router';
 import SinglePost from '../components/SinglePost';
 import tv from "../assets/tv.jpg"
+import { CartContexts } from '../contexts/CartContexts';
 
 export const getServerSideProps = async () => {
 
@@ -27,6 +28,9 @@ export const getServerSideProps = async () => {
 
 export default function CartScreen({ productsData }) {
     const router = useRouter();
+
+   const id = useContext(CartContexts);
+   console.log(id, "idididid");
 
     const allProducts = productsData.map((p) => (<div key={p.id}><SinglePost
         title={p.title}
