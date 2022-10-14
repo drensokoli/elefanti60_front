@@ -86,7 +86,7 @@ export default function SignUpScreen() {
   const newLocal = '/login';
   return (
     <Layout title="Sign Up" >
-      <div className='h-screen'>
+      <div className='h-screen mb-20'>
         <div className='flex justify-center mb-10 '>
           <div class="p-4 w-screen sm:w-5/6 mt-0.5 sm:mt-10 max-w-lg bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8">
             <form class="space-y-6"  onSubmit={handleSubmit}>
