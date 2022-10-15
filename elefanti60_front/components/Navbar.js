@@ -91,7 +91,8 @@ const Navbar  = () => {
                             </div> */}
               
                 <Link href="/cart">
-                    <a className='p-2 '>
+                    <div className='absolute top-7 right-11 '>
+                    <a >
                         <UilShoppingCart />
                         {cart.cartItems.length > 0 && (
                             <span className='ml-1 rounded-full bg-violet-600 px-2 py-1 text-xs font-bold text-white'>
@@ -99,6 +100,7 @@ const Navbar  = () => {
                             </span>
                         )}
                     </a>
+                    </div>
                 </Link>
                 <div>
                 <ChangingNavItem />
