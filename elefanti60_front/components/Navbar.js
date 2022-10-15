@@ -12,9 +12,10 @@ import search from "../pages/search";
 import { UilSearch } from '@iconscout/react-unicons'
 import { useRouter } from 'next/router';
 import DropdownMenu from "./DropdownMenu";
+import ChangingNavItem from "./ChangingNavItem";
 
 
-const Navbar = () => {
+const Navbar  = () => {
 
     const { state, dispatch } = useContext(Store);
     const { cart } = state;
@@ -88,17 +89,7 @@ const Navbar = () => {
                                 </li>
                                 </ul>
                             </div> */}
-                <Link href="/userinfo">
-                    <a>
-                        <UilUser /> 
-                    </a>
-                </Link>
-
-                <Link href="/login">
-                    <a>
-                        <h1>LOGIN</h1>
-                    </a>
-                </Link>
+              
                 <Link href="/cart">
                     <a className='p-2 '>
                         <UilShoppingCart />
@@ -109,6 +100,12 @@ const Navbar = () => {
                         )}
                     </a>
                 </Link>
+                <div>
+                <ChangingNavItem />
+                </div>
+                    
+                    
+                
             </div>
         <div className='pb-2 visible sm:hidden'>
                 <form onSubmit={handleSubmit}>
@@ -130,3 +127,14 @@ const Navbar = () => {
 }
 
 export default Navbar;
+{/* <Link href="/userinfo">
+<a>
+    <UilUser /> 
+</a>
+</Link>
+
+<Link href="/login">
+<a>
+    <h1>LOGIN</h1>
+</a>
+</Link> */}
