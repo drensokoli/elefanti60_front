@@ -7,7 +7,7 @@ import Category from '../components/Category';
 import Carousel from '../components/Carousel';
 import { UserInfoScreen } from './userinfo';
 import { useRouter } from 'next/router';
-import { quantity } from './product/[slug]';
+import OrderItem from '../components/OrderItem';
 
 
 export var id;
@@ -28,7 +28,7 @@ export const getServerSideProps = async () => {
     
     const https = require("https");
     const agent = new https.Agent({ rejectUnauthorized: false })
-    const productsRes = await fetch(`https://localhost:7277/api/ShoppingCarts/1`, { agent });
+    const productsRes = await fetch(`https://localhost:7277/api/OrderHistorys/1`, { agent });
     const productsData = await productsRes.json();
     
     
@@ -40,58 +40,59 @@ export const getServerSideProps = async () => {
 }
 
 
-export default function Home({ productsData, categoriesData }) {
+export default function Home({ productsData}) {
     
     const router = useRouter();
-     async function handleCheckout(event){
+    //  async function handleCheckout(event){
         
-        event.preventDefault()
-        const data = {
-            userId: getId()
-        }
+    //     event.preventDefault()
+    //     const data = {
+    //         userId: getId()
+    //     }
     
-        const jsonData = JSON.stringify(data);
+    //     const jsonData = JSON.stringify(data);
        
-        const endpoint = `https://localhost:7277/api/OrderItems/`;
-        const options = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: jsonData
-        }
-        console.log(jsonData, "jsondataaaaaa")
+    //     const endpoint = `https://localhost:7277/api/OrderItems/`;
+    //     const options = {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       },
+    //       body: jsonData
+    //     }
+    //     console.log(jsonData, "jsondataaaaaa")
     
-        const response = await fetch(endpoint, options);
-        console.log(response,"respo")
-        router.push("http://localhost:3000/cart")
-    }
-     const items = productsData.items;
+    //     const response = await fetch(endpoint, options);
+    //     console.log(response,"respo")
+    //     router.push("http://localhost:3000/cart")
+    // }
+     const items = productsData.orderedItems;
      const total = productsData.total
      console.log(items,"itemms");
     const allProducts = items.map((p) => (<div key={p.id}>
-        <CartItem
+        <OrderItem
+            total = {p.total}
             title={p.title}
             desc={p.description}
             id={p.id}
             image={p.image}
             price={p.price}
             stock={p.stock}
-            quantity = { p.quantity + 1}
-            category={p.category} />
+            quantity = { p.quantity}
+            category={p.category} 
+            date = {p.created}/>
     </div>));
 
 
     return (
         <Layout title="Home Page">
             <div className='flex flex-col justify-start gap-8 mt-5'>
-                <h1 className="text-3xl text-blue-700 font-semibold">Your cart:</h1>
+                <h1 className="text-3xl text-blue-700 font-semibold">Your past orders:</h1>
                 <div className='flex flex-col justify-center items-center gap-5 mb-5'>
                     {allProducts}
                 </div>
             <div className='flex flex-col justify-end items-center gap-5 mb-5 '>
                 <h1 className='text-2xl font-semibold'>Total: ${total}</h1>
-                <button type="button" class="text-white w-[250px] sm:w-[500px] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-6 py-3.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleCheckout}>Checkout</button>
             </div>
             </div>
 

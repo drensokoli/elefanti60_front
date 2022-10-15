@@ -35,6 +35,7 @@ export var quantity = 1
  export function getQuantity (event)  {
     event.preventDefault()
     quantity = document.getElementById("quantity").value;
+    total = product.price * quantity;
   }
 
 export default function ProductScreen({ product }) {
@@ -58,6 +59,7 @@ export default function ProductScreen({ product }) {
 
         event.preventDefault();
         document.getElementById('quantity-form').submit();
+        //quantity = 20;
         console.log(quantity,"quantityyy")
         const data = {
         userId: id,
@@ -87,7 +89,6 @@ export default function ProductScreen({ product }) {
         catch(ex)
         {
           console.log(ex)
-          alert(ex)
           alert("Sorry, Product is out of stock");
         }    
       
@@ -139,7 +140,7 @@ export default function ProductScreen({ product }) {
 
                             <div className='mb-2 flex justify-between'>
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Total</h5>
-                                <h5 class="mb-2 text-4xl font-medium tracking-tight text-gray-900">${product.price}</h5>
+                                <h5 class="mb-2 text-4xl font-medium tracking-tight text-gray-900" >{product.total}</h5>
                             </div>
                             <button className='text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-full' onClick={addToCartHandler}>Add to cart</button>
                         </div>

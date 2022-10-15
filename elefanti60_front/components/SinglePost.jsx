@@ -41,7 +41,6 @@ const SinglePost = ({ title, desc, id, category, price, image }) => {
         catch(ex)
         {
           console.log(ex)
-          alert(ex)
           alert("Sorry, Product is out of stock");
         } 
     }

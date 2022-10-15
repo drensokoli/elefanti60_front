@@ -3,8 +3,9 @@ import Link from "next/link";
 import { CartContexts } from "../contexts/CartContexts";
 import Image from "next/image";
 import telefon from '../assets/telefon.jpg'
+import { quantity } from "../pages/product/[slug]";
 
-const OrderItem = ({ title, desc, id, category, price, image }) => {
+const OrderItem = ({ title, desc, id, category, price, image, date, quantity }) => {
     // const { products, setProducts } = useContext(CartContexts);
     return (
         <>
@@ -29,11 +30,11 @@ const OrderItem = ({ title, desc, id, category, price, image }) => {
 
                         <div className="flex flex-col justify-start items-center">
                             <h5 class=" text-l tracking-tight text-gray-900 ">Date:</h5>
-                            <h5 class=" text-l tracking-tight text-gray-900 ">02-04-2022</h5>
+                            <h5 class=" text-l tracking-tight text-gray-900 ">{date}</h5>
                         </div>
                         <div className="flex flex-col justify-end items-center">
-                            <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Quantity: 4</h5>
-                            <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Total: {price}</h5>
+                                <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Quantity: {quantity + 1}</h5>
+                            <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Total: {price*(quantity +1)}</h5>
                         </div>
 
                     </div>

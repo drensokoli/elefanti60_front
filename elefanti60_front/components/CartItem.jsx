@@ -4,7 +4,7 @@ import { CartContexts } from "../contexts/CartContexts";
 import Image from "next/image";
 import telefon from '../assets/telefon.jpg'
 
-const CartItem = ({ title, desc, id, category, price, image }) => {
+const CartItem = ({ title, desc, id, category, price, image, quantity, total }) => {
     // const { products, setProducts } = useContext(CartContexts);
     return (
 <>
@@ -27,14 +27,15 @@ const CartItem = ({ title, desc, id, category, price, image }) => {
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-500">{desc}</p>
                 <div className="flex flex-row justify-between items-center gap-20">
 
-                    <select id="countries" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                    {/* <select id="countries" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block p-2.5">
                         <option selected="">1</option>
                         <option value="">2</option>
                         <option value="">3</option>
                         <option value="">4</option>
-                    </select>
+                    </select> */}
+                    {quantity + 1}
 
-                    <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Total: {price}</h5>
+                    <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Total: {total}</h5>
                 </div>
 
             </div>
