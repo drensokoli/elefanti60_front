@@ -28,7 +28,7 @@ export const getServerSideProps = async () => {
     
     const https = require("https");
     const agent = new https.Agent({ rejectUnauthorized: false })
-    const productsRes = await fetch(`https://localhost:7277/api/OrderHistorys/1`, { agent });
+    const productsRes = await fetch(`https://localhost:7277/api/OrderHistorys/2`, { agent });
     const productsData = await productsRes.json();
     
     
