@@ -4,7 +4,6 @@ import Router, { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContext } from 'react';
-import { Store } from '../../utils/Store';
 import { CartContexts } from '../../contexts/CartContexts';
 import Category from '../../components/Category';
 
@@ -17,43 +16,86 @@ export const getServerSideProps = async (context) => {
     const myUrl = `https:/localhost:7277/api/products/${slug}`;
     const agent = new https.Agent({ rejectUnauthorized: false })
     const productsRes = await fetch(myUrl, { agent });
-    const productsData = await productsRes.json();
+    const product = await productsRes.json();
 
     return {
         props: {
-            productsData,
+            product,
         },
     };
 }
 
-export default function ProductScreen({ productsData }) {
+export function getId () {
+    const id = useContext(CartContexts);
+    return id;
+}
 
-    const { state, dispatch } = useContext(Store);
+export var quantity = 1
+
+ export function getQuantity (event)  {
+    event.preventDefault()
+    quantity = document.getElementById("quantity").value;
+  }
+
+export default function ProductScreen({ product }) {
+
+   // const { state, dispatch } = useContext(Store);
     //  const { products, setProducts } = useContext(CartContexts);
 
     const router = useRouter();
     const { query } = useRouter();
     const { path } = query;
-    const product = productsData
     if (!product) {
         return <div> Product Not Found</div>;
     }
-    const addToCartHandler = () => {
-        const existsItem = state.cart.cartItems.find((x) => x.slug === product.slug);
-        const quantity = existsItem ? existsItem.quantity + 1 : 1;
 
-        if (product.stock < quantity) {
-            alert('Sorry, Product is out of stock')
-            return;
+    const id = getId();
+    // let quantity="1"
+    // quantity = getQuantity();
+    
+
+      async function addToCartHandler (event){
+
+        event.preventDefault();
+        document.getElementById('quantity-form').submit();
+        console.log(quantity,"quantityyy")
+        const data = {
+        userId: id,
+        productId: product.id,
+        quantity: quantity,
         }
-        dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
-        router.push('/cart');
-        setProducts({ ...product, quantity })
+    
+        const jsonData = JSON.stringify(data);
+        const endpoint = 'https://localhost:7277/api/CartItems';
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: jsonData,
+        }
+    
+        const response = await fetch(endpoint, options);
+        console.log(response);
+       // const result = await response.json()
+        try
+        {
+          const result = await response.json();
+          console.log(result);
+          alert("Product added to cart succesfully")
+        }
+        catch(ex)
+        {
+          console.log(ex)
+          alert(ex)
+          alert("Sorry, Product is out of stock");
+        }    
+      
     };
 
 
     //console.log(products, "Context products")
-    console.log(state, "STORE STATE")
+    //console.log(state, "STORE STATE")
     return (
 
         <Layout title={product.title}>
@@ -75,17 +117,21 @@ export default function ProductScreen({ productsData }) {
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Quantity</h5>
                                 <div>
 
-                                    <form className=''>
-                                        <select className='h-10 w-12 font-normal text-xl'>
-                                            <option value="javascript">1</option>
-                                            <option value="php">2</option>
-                                            <option value="java">3</option>
-                                            <option value="golang">4</option>
-                                            <option value="python">5</option>
-                                            <option value="c#">6</option>
-                                            <option value="C++">7</option>
-                                            <option value="erlang">8</option>
-                                        </select>
+                                    <form id="quantity-form" onChange={getQuantity}>
+                                        {/* <select className='h-10 w-12 font-normal text-xl'>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select> */}
+                                        <div className='h-10 w-12 font-normal text-xl'>
+                  <input type="number" name="quantity" id="quantity" class="h-10 w-12 font-normal text-xl"  required />
+                  </div>
+                                       
                                     </form>
                                 </div>
 
