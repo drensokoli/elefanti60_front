@@ -43,29 +43,29 @@ export const getServerSideProps = async () => {
 export default function Home({ productsData}) {
     
     const router = useRouter();
-    //  async function handleCheckout(event){
+     async function handleCheckout(event){
         
-    //     event.preventDefault()
-    //     const data = {
-    //         userId: getId()
-    //     }
+        event.preventDefault()
+        const data = {
+            userId: getId()
+        }
     
-    //     const jsonData = JSON.stringify(data);
+        const jsonData = JSON.stringify(data);
        
-    //     const endpoint = `https://localhost:7277/api/OrderItems/`;
-    //     const options = {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: jsonData
-    //     }
-    //     console.log(jsonData, "jsondataaaaaa")
+        const endpoint = `https://localhost:7277/api/OrderItems/`;
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: jsonData
+        }
+        console.log(jsonData, "jsondataaaaaa")
     
-    //     const response = await fetch(endpoint, options);
-    //     console.log(response,"respo")
-    //     router.push("http://localhost:3000/cart")
-    // }
+        const response = await fetch(endpoint, options);
+        console.log(response,"respo")
+        router.push("http://localhost:3000/cart")
+    }
      const items = productsData.orderedItems;
      const total = productsData.total
      console.log(items,"itemms");
