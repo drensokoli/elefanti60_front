@@ -14,7 +14,7 @@ const SinglePost = ({ title, desc, id, category, price, image }) => {
         event.preventDefault();
        
         const data = {
-        userId: 1,
+        userId: 2,
         productId: id,
         quantity: 1,
         }

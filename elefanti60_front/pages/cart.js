@@ -28,7 +28,7 @@ export const getServerSideProps = async () => {
     
     const https = require("https");
     const agent = new https.Agent({ rejectUnauthorized: false })
-    const productsRes = await fetch(`https://localhost:7277/api/ShoppingCarts/1`, { agent });
+    const productsRes = await fetch(`https://localhost:7277/api/ShoppingCarts/2`, { agent });
     const productsData = await productsRes.json();
     
     
@@ -60,6 +60,7 @@ export default function Home({ productsData, categoriesData }) {
           },
           body: jsonData
         }
+        
         console.log(jsonData, "jsondataaaaaa")
     
         const response = await fetch(endpoint, options);
