@@ -30,12 +30,12 @@ export function getId () {
     return id;
 }
 
-export var quantity = 1
+export var quantity;
 
  export function getQuantity (event)  {
     event.preventDefault()
     quantity = document.getElementById("quantity").value;
-    total = product.price * quantity;
+    //total = price * quantity;
   }
 
 export default function ProductScreen({ product }) {

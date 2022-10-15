@@ -33,9 +33,9 @@ const CartItem = ({ title, desc, id, category, price, image, quantity, total }) 
                         <option value="">3</option>
                         <option value="">4</option>
                     </select> */}
-                    {quantity + 1}
+                    {quantity}
 
-                    <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Total: {total}</h5>
+                    <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Total: ${price * quantity}</h5>
                 </div>
 
             </div>
