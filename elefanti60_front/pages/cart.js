@@ -77,8 +77,9 @@ export default function Home({ productsData, categoriesData }) {
             image={p.image}
             price={p.price}
             stock={p.stock}
-            quantity = { p.quantity + 1}
-            category={p.category} />
+            quantity = {p.quantity}
+            category={p.category} 
+            total = {p.quantity * p.price}/>
     </div>));
 
 
