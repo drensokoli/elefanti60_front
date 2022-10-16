@@ -8,66 +8,95 @@ import Carousel from '../components/Carousel';
 import { UserInfoScreen } from './userinfo';
 import { useRouter } from 'next/router';
 import OrderItem from '../components/OrderItem';
+import { useEffect, useState } from 'react';
 
 
-export var id;
-export const getId = () => {
+// export var id;
+// export const getId = () => {
 
-    if (typeof window === "undefined") {console.log("window undefined")}
-    else{console.log("defined")}
-    try{
-        id = window.localStorage.getItem('id');
-        console.log(id, "user");
-    }  catch(ex){
-        console.log(ex, "error")
-    }
-    return id;
-}
+//     if (typeof window === "undefined") {console.log("window undefined")}
+//     else{console.log("defined")}
+//     try{
+//         id = window.localStorage.getItem('id');
+//         console.log(id, "user");
+//     }  catch(ex){
+//         console.log(ex, "error")
+//     }
+//     return id;
+// }
 
-export const getServerSideProps = async () => {
+// export const getServerSideProps = async () => {
     
-    const https = require("https");
-    const agent = new https.Agent({ rejectUnauthorized: false })
-    const productsRes = await fetch(`https://localhost:7277/api/OrderHistorys/2`, { agent });
-    const productsData = await productsRes.json();
+//     const https = require("https");
+//     const agent = new https.Agent({ rejectUnauthorized: false })
+//     const productsRes = await fetch(`https://localhost:7277/api/OrderHistorys/2`, { agent });
+//     const productsData = await productsRes.json();
     
     
-    return {
-        props: {
-            productsData,
-        },
-    };
-}
+//     return {
+//         props: {
+//             productsData,
+//         },
+//     };
+// }
 
 
-export default function Home({ productsData}) {
+export default function OrderHistory({ productsData}) {
     
     const router = useRouter();
-     async function handleCheckout(event){
+    const[isLoading, setIsLoading] = useState(true);
+    const[orderedData, setOrderedData] = useState(null);
+    //  async function handleCheckout(event){
         
-        event.preventDefault()
-        const data = {
-            userId: getId()
-        }
+    //     event.preventDefault()
+    //     const data = {
+    //         userId: getId()
+    //     }
     
-        const jsonData = JSON.stringify(data);
+    //     const jsonData = JSON.stringify(data);
        
-        const endpoint = `https://localhost:7277/api/OrderItems/`;
-        const options = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: jsonData
-        }
-        console.log(jsonData, "jsondataaaaaa")
+    //     const endpoint = `https://localhost:7277/api/OrderItems/`;
+    //     const options = {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       },
+    //       body: jsonData
+    //     }
+    //     console.log(jsonData, "jsondataaaaaa")
     
-        const response = await fetch(endpoint, options);
-        console.log(response,"respo")
-        router.push("http://localhost:3000/cart")
+    //     const response = await fetch(endpoint, options);
+    //     console.log(response,"respo")
+    //     router.push("http://localhost:3000/cart")
+    // }
+
+    useEffect(() => {
+        async function fetchCartData(){
+            const userId = localStorage.getItem('id');
+            const https = require("https");
+            const agent = new https.Agent({ rejectUnauthorized: false })
+            const productsRes = await fetch(`https://localhost:7277/api/OrderHistorys/` + userId, { agent });
+            const productsData = await productsRes.json();
+            setOrderedData(productsData);
+            setIsLoading(false)
+        }
+        fetchCartData()
+    }, [])
+    if(isLoading){
+        return (
+            <Layout title="Home Page">
+                <div className='flex flex-col justify-start gap-8 mt-5'>
+                    <h1 className="text-3xl text-blue-700 font-semibold">Your cart:</h1>
+                    <div className='flex flex-col justify-center items-center gap-5 mb-5'>
+                        <h3>Loading...</h3>
+                    </div>
+                </div>
+    
+            </Layout >
+        )
     }
-     const items = productsData.orderedItems;
-     const total = productsData.total
+     const items = orderedData.orderedItems;
+     const total = orderedData.total
      console.log(items,"itemms");
     const allProducts = items.map((p) => (<div key={p.id}>
         <OrderItem

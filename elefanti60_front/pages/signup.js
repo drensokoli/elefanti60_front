@@ -77,7 +77,7 @@ export default function SignUpScreen() {
     catch(ex)
     {
       console.log(ex)
-      alert("Wrong username or password");
+      alert("This username is taken");
     }
 
   }
