@@ -51,12 +51,6 @@ export default function ProductScreen({ product }) {
 
     const addToCartHandler = async (event) => {
         event.preventDefault();
-        // if(localStorage.getItem('id') == null){
-        //     alert("You're not logged in!")
-        //     router.push("http://localhost:3000/login")
-        // }else{
-        //     console.log(localStorage.getItem('id'),"oaergb;rogvbo;rgvbo;re")
-        // }
         const data = {
             userId: localStorage.getItem('id'),
             productId: id,

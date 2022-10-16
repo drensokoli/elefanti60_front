@@ -4,11 +4,13 @@ import Layout from '../components/Layout';
 import DropdownMenu from '../components/DropdownMenu';
 import Link from 'next/link';
 
-export const logout = () => {
-
-   localStorage.setItem("id", null);
-}
 export default function UserInfoScreen() {
+    const router = useRouter();
+
+    const logout = () => {
+        localStorage.setItem("id", null);
+        router.push("/login");
+    }
     return (
         <Layout title="User Info">
             <div className='flex flex-col justify-center items-center gap-4 h-screen mb-5'>

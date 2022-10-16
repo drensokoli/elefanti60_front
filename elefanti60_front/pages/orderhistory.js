@@ -10,66 +10,11 @@ import { useRouter } from 'next/router';
 import OrderItem from '../components/OrderItem';
 import { useEffect, useState } from 'react';
 
-
-// export var id;
-// export const getId = () => {
-
-//     if (typeof window === "undefined") {console.log("window undefined")}
-//     else{console.log("defined")}
-//     try{
-//         id = window.localStorage.getItem('id');
-//         console.log(id, "user");
-//     }  catch(ex){
-//         console.log(ex, "error")
-//     }
-//     return id;
-// }
-
-// export const getServerSideProps = async () => {
-    
-//     const https = require("https");
-//     const agent = new https.Agent({ rejectUnauthorized: false })
-//     const productsRes = await fetch(`https://localhost:7277/api/OrderHistorys/2`, { agent });
-//     const productsData = await productsRes.json();
-    
-    
-//     return {
-//         props: {
-//             productsData,
-//         },
-//     };
-// }
-
-
 export default function OrderHistory({ productsData}) {
     
     const router = useRouter();
     const[isLoading, setIsLoading] = useState(true);
     const[orderedData, setOrderedData] = useState(null);
-    //  async function handleCheckout(event){
-        
-    //     event.preventDefault()
-    //     const data = {
-    //         userId: getId()
-    //     }
-    
-    //     const jsonData = JSON.stringify(data);
-       
-    //     const endpoint = `https://localhost:7277/api/OrderItems/`;
-    //     const options = {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: jsonData
-    //     }
-    //     console.log(jsonData, "jsondataaaaaa")
-    
-    //     const response = await fetch(endpoint, options);
-    //     console.log(response,"respo")
-    //     router.push("http://localhost:3000/cart")
-    // }
-
     useEffect(() => {
         async function fetchCartData(){
             const userId = localStorage.getItem('id');
