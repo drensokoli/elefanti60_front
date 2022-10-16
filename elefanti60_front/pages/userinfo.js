@@ -22,28 +22,29 @@ export default function UserInfoScreen() {
 
                         <div>
                             <h1 className=''>Name:</h1>
-                            <h5 className='w-[200px] sm:w-[500px]'>Text</h5>
+                            <input type="text" id =" " name="" defaultValue="text" className='w-[200px] sm:w-[500px] border-2 rounded h-10 text-lg'/>
                         </div>
                         <div>
                             <h1 className=''>Last name:</h1>
-                            <h5 className='w-[200px] sm:w-[500px]'>Text</h5>
+                            <input type="text" id =" " name="" defaultValue="text" className='w-[200px] sm:w-[500px] border-2 rounded h-10 text-lg'/>
                         </div>
                         <div>
                             <h1 className=''>Username:</h1>
-                            <h5 className='w-[200px] sm:w-[500px]'>Text</h5>
+                            <input type="text" id =" " name="" defaultValue="text" className='w-[200px] sm:w-[500px] border-2 rounded h-10 text-lg'/>
                         </div>
                         <div>
                             <h1 className=''>Email:</h1>
-                            <h5 className='w-[200px] sm:w-[500px]'>Text</h5>
+                            <input type="text" id =" " name="" defaultValue="text" className='w-[200px] sm:w-[500px] border-2 rounded h-10 text-lg'/>
                         </div>
                         <div>
                             <h1 className=''>Address:</h1>
-                            <h5 className='w-[200px] sm:w-[500px]'>Text</h5>
+                            <input type="text" id =" " name="" defaultValue="text" className='w-[200px] sm:w-[500px] border-2 rounded h-10 text-lg'/>
                         </div>
                         <div>
                             <h1 className=''>Amount:</h1>
-                            <h5 className='w-[200px] sm:w-[500px]'>Text</h5>
+                            <input type="text" id =" " name="" defaultValue="text" className='w-[200px] sm:w-[500px] border-2 rounded h-10 text-lg'/>
                         </div>
+                        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" onClick={handleEdit}>Save changes</button>
                     </div>
 
 
