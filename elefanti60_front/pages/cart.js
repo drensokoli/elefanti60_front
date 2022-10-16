@@ -69,7 +69,12 @@ export default function Cart() {
     
         const response = await fetch(endpoint, options);
         console.log(response,"respo")
-        router.push("http://localhost:3000/orderhistory")
+        if(response.ok){
+            alert("Order successful!")
+            router.push("/")
+        } else{
+            alert("Order cannot be completed!")
+        }
     }
 
     useEffect(() => {
