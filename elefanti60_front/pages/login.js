@@ -64,10 +64,10 @@ export default function LoginScreen() {
   }
 
 
-  if (!user) return null
-  else 
 
   return (
+//     !localstorage ? null 
+// : 
     <Layout title="Login">
       <div className=' h-screen'>
         <div className='flex justify-center mt-10'>

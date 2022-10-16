@@ -8,7 +8,7 @@ import Router from 'next/router'
 
 
 export default function ChangingNavItem() {
-    var id;
+    var id = useContext(CartContexts);
     const getId = () => {
         // const id = useContext(CartContexts);
         // return id;
@@ -35,6 +35,7 @@ export default function ChangingNavItem() {
         else { console.log("window defined") }
         try {
             window.localStorage.clear(getId(id));
+            // window.localStorage.setItem('id' , null)
             Router.push('/')
 
             console.log(id, "user");
@@ -46,7 +47,7 @@ export default function ChangingNavItem() {
         ;
     }
 
-    var userEmpty = getId(id) == null;
+    var userEmpty = id == null;
     console.log(id, "idd")
     return (
         <>
