@@ -5,6 +5,7 @@ import Image from "next/image";
 import telefon from '../assets/telefon.jpg'
 import Router from "next/router";
 import { useRouter } from "next/router";
+import { quantity } from "../pages/product/[slug]";
 
 export function getId () {
     const id = useContext(CartContexts);
@@ -42,7 +43,6 @@ const SinglePost = ({ title, desc, id, category, price, image, stock }) => {
     
         const response = await fetch(endpoint, options);
         console.log(response);
-       // const result = await response.json()
        try{
         if(response.ok){
             alert("Product added to cart succesfully")
@@ -50,7 +50,7 @@ const SinglePost = ({ title, desc, id, category, price, image, stock }) => {
         else if(localStorage.getItem('id')== "null"){
             alert("You're not logged in")                    
         }
-        else if( stock < 1){
+        else{
             alert("You can't order more of this product")
         }
     }
@@ -58,7 +58,6 @@ const SinglePost = ({ title, desc, id, category, price, image, stock }) => {
        console.log(ex);
     }
     }
-   // const { products, setProducts } = useContext(CartContexts);
     return (
         
 <>

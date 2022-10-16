@@ -4,8 +4,18 @@ import { CartContexts } from "../contexts/CartContexts";
 import Image from "next/image";
 import telefon from '../assets/telefon.jpg'
 
-const CartItem = ({ title, desc, id, productId, price, image, quantity, total }) => {
-    // const { products, setProducts } = useContext(CartContexts);
+const CartItem = ({ title, desc, id, productId, price, image, quantity, total, stock }) => {
+
+    let inStock;
+    if (stock == 0) {
+        inStock = "Out of stock";
+    }
+    else {
+
+        inStock = "Stock: " + stock;
+    }
+    console.log(stock, "stock test");
+
     return (
         <>
             <div class="flex flex-col sm:flex-row h-fit lg:w-[1100px] lg:gap-30 bg-white rounded-lg border border-gray-200 shadow-md justify-around pb-5">
@@ -25,22 +35,16 @@ const CartItem = ({ title, desc, id, productId, price, image, quantity, total })
 
                     </Link>
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-500">{desc}</p>
-                    <div className="flex flex-row justify-between items-center gap-20">
-
-                        {/* <select id="countries" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                        <option selected="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                    </select> */}
-                        {quantity}
-
+                    <div className="flex flex-row justify-between items-end gap-20">
+                        <div className="flex flex-col justify-center items-start">
+                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">{inStock}</p>
+                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">Quantity: {quantity}</p>
+                        </div>
                         <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Total: ${total}</h5>
                     </div>
 
                 </div>
             </div>
-
         </>
     )
 }

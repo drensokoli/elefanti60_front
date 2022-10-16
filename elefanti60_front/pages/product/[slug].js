@@ -35,9 +35,17 @@ export var quantity = 1;
 export function getQuantity(event) {
     event.preventDefault()
     quantity = document.getElementById("quantity").value;
-}
+    } 
+
 
 export default function ProductScreen({ product }) {
+    
+    let inStock;
+    if (product.stock == 0) {
+        inStock = "Out of stock";
+    } else {
+        inStock = "Stock: " + product.stock;
+    }
 
     const router = useRouter();
     const { query } = useRouter();
@@ -66,25 +74,25 @@ export default function ProductScreen({ product }) {
 
         const response = await fetch(endpoint, options);
         console.log(response, "response");
-        console.log(quantity,"quantity");
-        console.log(product.stock,"stock");
-        console.log(jsonData,"jsondaata")
+        console.log(quantity, "quantity");
+        console.log(product.stock, "stock");
+        console.log(jsonData, "jsondaata")
         console.log(localStorage.getItem('id') == "null", "isnull")
-          
-            try{
-                if(response.ok){
-                    alert("Product added to cart succesfully")
-                }
-                else if(localStorage.getItem('id')== "null"){
-                    alert("You're not logged in")                    
-                }
-                else if(quantity> product.stock){
-                    alert("You can't order more of this product")
-                }
+
+        try {
+            if (response.ok) {
+                alert("Product added to cart succesfully")
             }
-            catch(ex){
-               console.log(ex);
+            else if (localStorage.getItem('id') == "null") {
+                alert("You're not logged in")
             }
+            else {
+                alert("You can't order more of this product")
+            }
+        }
+        catch (ex) {
+            console.log(ex);
+        }
 
     }
     return (
@@ -103,13 +111,12 @@ export default function ProductScreen({ product }) {
 
                         <div className='card mt-10'>
                             <div className='mb-4 flex justify-between'>
-
-                                {/* <h5 class="text-2xl pt-1 font-medium tracking-tight text-gray-900">Quantity</h5> */}
+                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">{inStock}</p>
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Quantity</h5>
                                 <div>
                                     <form id="quantity-form" onChange={getQuantity}>
                                         <div className='h-10 w-12 font-normal text-xl'>
-                                            <input type="number" defaultValue={1} name="quantity" min={1} max={product.stock} id="quantity" class="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-md block w-fit p-2.5" required/>
+                                            <input type="number" defaultValue={1} name="quantity" min={1} max={product.stock} id="quantity" class="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-md block w-fit p-2.5" required />
                                         </div>
                                     </form>
                                 </div>
