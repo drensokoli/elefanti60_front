@@ -30,11 +30,12 @@ export function getId() {
     return id;
 }
 
-export var quantity = 1;
+export var quantity;
 
 export function getQuantity(event) {
     event.preventDefault()
     quantity = document.getElementById("quantity").value;
+    //total = price * quantity;
 }
 
 export default function ProductScreen({ product }) {
@@ -46,11 +47,19 @@ export default function ProductScreen({ product }) {
         return <div> Product Not Found</div>;
     }
 
+    const id = getId();
+
     const addToCartHandler = async (event) => {
         event.preventDefault();
+        // if(localStorage.getItem('id') == null){
+        //     alert("You're not logged in!")
+        //     router.push("http://localhost:3000/login")
+        // }else{
+        //     console.log(localStorage.getItem('id'),"oaergb;rogvbo;rgvbo;re")
+        // }
         const data = {
             userId: localStorage.getItem('id'),
-            productId: product.id,
+            productId: id,
             quantity: quantity,
         }
 
@@ -65,28 +74,26 @@ export default function ProductScreen({ product }) {
         }
 
         const response = await fetch(endpoint, options);
-        console.log(response, "response");
-        console.log(quantity,"quantity");
-        console.log(product.stock,"stock");
-        console.log(jsonData,"jsondaata")
-        console.log(localStorage.getItem('id') == "null", "isnull")
-          
-            try{
-                if(response.ok){
-                    alert("Product added to cart succesfully")
-                }
-                else if(localStorage.getItem('id')== "null"){
-                    alert("You're not logged in")                    
-                }
-                else if(quantity> product.stock){
-                    alert("You can't order more of this product")
-                }
+        console.log(response);
+        if(!response.ok){
+            alert("You're not logged in")
+            router.push("http://localhost:3000/login");
+        } else {
+            try {
+                const result = await response.json();
+                console.log(result);
+                alert("Product added to cart succesfully")
             }
-            catch(ex){
-               console.log(ex);
+            catch (ex) {
+                console.log(ex)
+                alert("You can't order more of this product");
             }
+        }
+        // const result = await response.json()
 
     }
+    //console.log(products, "Context products")
+    //console.log(state, "STORE STATE")
     return (
 
         <Layout title={product.title}>

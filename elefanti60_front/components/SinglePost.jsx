@@ -10,14 +10,8 @@ export function getId () {
     const id = useContext(CartContexts);
     return id;
 }
-const SinglePost = ({ title, desc, id, category, price, image, stock }) => {
+const SinglePost = ({ title, desc, id, category, price, image }) => {
     const  router = useRouter()
-    let inStock;
-    if(stock == 0) {
-        inStock = "Out of stock";
-    } else{
-        inStock = "Stock: " + stock;
-    }
     const redirect = async (event) => {
         event.preventDefault();
         if(localStorage.getItem('id') == null){
@@ -43,19 +37,19 @@ const SinglePost = ({ title, desc, id, category, price, image, stock }) => {
         const response = await fetch(endpoint, options);
         console.log(response);
        // const result = await response.json()
-       try{
-        if(response.ok){
+       if(!response.ok){
+        alert("You're not logged in")
+        router.push("http://localhost:3000/login");
+    } else {
+        try {
+            const result = await response.json();
+            console.log(result);
             alert("Product added to cart succesfully")
         }
-        else if(localStorage.getItem('id')== "null"){
-            alert("You're not logged in")                    
+        catch (ex) {
+            console.log(ex)
+            alert("You can't order more of this product");
         }
-        else if( stock < 1){
-            alert("You can't order more of this product")
-        }
-    }
-    catch(ex){
-       console.log(ex);
     }
     }
    // const { products, setProducts } = useContext(CartContexts);
@@ -80,7 +74,7 @@ const SinglePost = ({ title, desc, id, category, price, image, stock }) => {
                     </div>
 
                 </Link>
-                        <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">{inStock}</p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-500">{category}</p>
                 <button type="button" class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900 " onClick={redirect}>Add to Cart</button>
 
             </div>
