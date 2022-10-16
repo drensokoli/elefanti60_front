@@ -4,7 +4,10 @@ import Layout from '../components/Layout';
 import DropdownMenu from '../components/DropdownMenu';
 import Link from 'next/link';
 
+export const logout = () => {
 
+   localStorage.setItem("id", null);
+}
 export default function UserInfoScreen() {
     return (
         <Layout title="User Info">
@@ -45,7 +48,7 @@ export default function UserInfoScreen() {
                     <Link href="/orderhistory">
                         <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Order History</button>
                     </Link>
-                    <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Log out</button>
+                    <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" onClick={logout}>Log out</button>
                 </div>
             </div>
 

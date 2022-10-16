@@ -51,9 +51,14 @@ export default function ProductScreen({ product }) {
 
     const addToCartHandler = async (event) => {
         event.preventDefault();
-
+        // if(localStorage.getItem('id') == null){
+        //     alert("You're not logged in!")
+        //     router.push("http://localhost:3000/login")
+        // }else{
+        //     console.log(localStorage.getItem('id'),"oaergb;rogvbo;rgvbo;re")
+        // }
         const data = {
-            userId: 2,
+            userId: localStorage.getItem('id'),
             productId: id,
             quantity: quantity,
         }
@@ -70,16 +75,22 @@ export default function ProductScreen({ product }) {
 
         const response = await fetch(endpoint, options);
         console.log(response);
+        if(!response.ok){
+            alert("You're not logged in")
+            router.push("http://localhost:3000/login");
+        } else {
+            try {
+                const result = await response.json();
+                console.log(result);
+                alert("Product added to cart succesfully")
+            }
+            catch (ex) {
+                console.log(ex)
+                alert("You can't order more of this product");
+            }
+        }
         // const result = await response.json()
-        try {
-            const result = await response.json();
-            console.log(result);
-            alert("Product added to cart succesfully")
-        }
-        catch (ex) {
-            console.log(ex)
-            alert("You can't order more of this product");
-        }
+
     }
     //console.log(products, "Context products")
     //console.log(state, "STORE STATE")

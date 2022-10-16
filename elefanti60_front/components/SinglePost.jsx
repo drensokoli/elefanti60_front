@@ -4,17 +4,22 @@ import { CartContexts } from "../contexts/CartContexts";
 import Image from "next/image";
 import telefon from '../assets/telefon.jpg'
 import Router from "next/router";
+import { useRouter } from "next/router";
 
 export function getId () {
     const id = useContext(CartContexts);
     return id;
 }
 const SinglePost = ({ title, desc, id, category, price, image }) => {
+    const  router = useRouter()
     const redirect = async (event) => {
         event.preventDefault();
-       
+        if(localStorage.getItem('id') == null){
+            alert("You're not logged in!")
+            router.push("http://localhost:3000/login")
+        }
         const data = {
-        userId: 2,
+        userId: localStorage.getItem('id'),
         productId: id,
         quantity: 1,
         }
@@ -32,17 +37,20 @@ const SinglePost = ({ title, desc, id, category, price, image }) => {
         const response = await fetch(endpoint, options);
         console.log(response);
        // const result = await response.json()
-        try
-        {
-          const result = await response.json();
-          console.log(result);
-          alert("Product added to cart succesfully")
+       if(!response.ok){
+        alert("You're not logged in")
+        router.push("http://localhost:3000/login");
+    } else {
+        try {
+            const result = await response.json();
+            console.log(result);
+            alert("Product added to cart succesfully")
         }
-        catch(ex)
-        {
-          console.log(ex)
-          alert("Sorry, Product is out of stock");
-        } 
+        catch (ex) {
+            console.log(ex)
+            alert("You can't order more of this product");
+        }
+    }
     }
    // const { products, setProducts } = useContext(CartContexts);
     return (
