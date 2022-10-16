@@ -25,23 +25,20 @@ export const getServerSideProps = async (context) => {
     };
 }
 
-export function getId () {
+export function getId() {
     const id = useContext(CartContexts);
     return id;
 }
 
 export var quantity;
 
- export function getQuantity (event)  {
+export function getQuantity(event) {
     event.preventDefault()
     quantity = document.getElementById("quantity").value;
     //total = price * quantity;
-  }
+}
 
 export default function ProductScreen({ product }) {
-
-   // const { state, dispatch } = useContext(Store);
-    //  const { products, setProducts } = useContext(CartContexts);
 
     const router = useRouter();
     const { query } = useRouter();
@@ -51,50 +48,39 @@ export default function ProductScreen({ product }) {
     }
 
     const id = getId();
-    // let quantity="1"
-    // quantity = getQuantity();
-    
 
-      async function addToCartHandler (event){
-
+    const addToCartHandler = async (event) => {
         event.preventDefault();
-        document.getElementById('quantity-form').submit();
-        //quantity = 20;
-        console.log(quantity,"quantityyy")
+
         const data = {
-        userId: id,
-        productId: product.id,
-        quantity: quantity,
+            userId: 2,
+            productId: id,
+            quantity: quantity,
         }
-    
+
         const jsonData = JSON.stringify(data);
         const endpoint = 'https://localhost:7277/api/CartItems';
         const options = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: jsonData,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonData,
         }
-    
+
         const response = await fetch(endpoint, options);
         console.log(response);
-       // const result = await response.json()
-        try
-        {
-          const result = await response.json();
-          console.log(result);
-          alert("Product added to cart succesfully")
+        // const result = await response.json()
+        try {
+            const result = await response.json();
+            console.log(result);
+            alert("Product added to cart succesfully")
         }
-        catch(ex)
-        {
-          console.log(ex)
-          alert("Sorry, Product is out of stock");
-        }    
-      
-    };
-
-
+        catch (ex) {
+            console.log(ex)
+            alert("You can't order more of this product");
+        }
+    }
     //console.log(products, "Context products")
     //console.log(state, "STORE STATE")
     return (
@@ -117,27 +103,13 @@ export default function ProductScreen({ product }) {
                                 {/* <h5 class="text-2xl pt-1 font-medium tracking-tight text-gray-900">Quantity</h5> */}
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Quantity</h5>
                                 <div>
-
                                     <form id="quantity-form" onChange={getQuantity}>
-                                        {/* <select className='h-10 w-12 font-normal text-xl'>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                        </select> */}
                                         <div className='h-10 w-12 font-normal text-xl'>
-                  <input type="number" name="quantity" id="quantity" class="h-10 w-12 font-normal text-xl"  required />
-                  </div>
-                                       
+                                            <input type="number" defaultValue={1} name="quantity" min={1} max={product.stock} id="quantity" class="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-md block w-fit p-2.5" required/>
+                                        </div>
                                     </form>
                                 </div>
-
                             </div>
-
                             <div className='mb-2 flex justify-between'>
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Total</h5>
                                 <h5 class="mb-2 text-4xl font-medium tracking-tight text-gray-900" >{product.total}</h5>

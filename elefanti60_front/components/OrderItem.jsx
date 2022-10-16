@@ -5,20 +5,20 @@ import Image from "next/image";
 import telefon from '../assets/telefon.jpg'
 import { quantity } from "../pages/product/[slug]";
 
-const OrderItem = ({ title, desc, id, category, price, image, date, quantity }) => {
+const OrderItem = ({ title, desc, id, productId, price, image, date, quantity }) => {
     // const { products, setProducts } = useContext(CartContexts);
     return (
         <>
             <div class="flex flex-col sm:flex-row h-fit lg:w-[1100px] lg:gap-30 bg-white rounded-lg border border-gray-200 shadow-md justify-around pb-5">
                 <div className='flex flex-col items-center justify-center p-10 justify-items-center'>
-                    <Link href={`/product/${id}`}>
+                    <Link href={`/product/${productId}`}>
                         <a className="h-40">
                             <img src={image} alt="" />
                         </a>
                     </Link>
                 </div>
                 <div className='flex flex-col mt-3 justify-center p-5 gap-2'>
-                    <Link href={`/product/${id}`}>
+                    <Link href={`/product/${productId}`}>
                         <div className="flex flex-row justify-between">
                             <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">{title}</h5>
                             <p className=" text-xl font-mediium tracking-tight text-gray-700">${price}</p>

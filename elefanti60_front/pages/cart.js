@@ -75,6 +75,7 @@ export default function Home({ productsData, categoriesData }) {
             title={p.title}
             desc={p.description}
             id={p.id}
+            productId = {p.productId}
             image={p.image}
             price={p.price}
             stock={p.stock}
