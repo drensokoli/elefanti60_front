@@ -7,6 +7,7 @@ import logo from '../assets/logo.png'
 import Image from 'next/image'
 import { UilSearch } from '@iconscout/react-unicons'
 import { useRouter } from 'next/router';
+import ChangingNavItem from "./ChangingNavItems";
 
 
 const Navbar = () => {
@@ -63,28 +64,7 @@ const Navbar = () => {
                         </form>
 
                     </div>
-
-                    <Link href="/userinfo">
-                        <a>
-                            <UilUser />
-                        </a>
-                    </Link>
-
-                    <Link href="/login">
-                        <a>
-                            <h1>LOGIN</h1>
-                        </a>
-                    </Link>
-                    <Link href="/cart">
-                        <a className='p-2 '>
-                            <UilShoppingCart />
-                            {cart.cartItems.length > 0 && (
-                                <span className='ml-1 rounded-full bg-violet-600 px-2 py-1 text-xs font-bold text-white'>
-                                    {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-                                </span>
-                            )}
-                        </a>
-                    </Link>
+                      <ChangingNavItem/> 
                 </div>
                 <div className='pb-2 visible sm:hidden'>
                     <form onSubmit={handleSubmit}>
