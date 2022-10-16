@@ -33,7 +33,7 @@ export default function Cart() {
         console.log(response,"respo")
         if(response.ok){
             alert("Order successful!")
-            router.push("/")
+            router.push("/#")
         } else{
             alert("Order cannot be completed!")
         }

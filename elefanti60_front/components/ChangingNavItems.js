@@ -29,7 +29,8 @@ export default function ChangingNavItem() {
         try {
             localStorage.clear(getId(id));            
             console.log(id, "user");
-            router.reload('/#');
+            router.push("../");
+            
             
         } catch (ex) {
             console.log(ex, "error")
