@@ -19,13 +19,6 @@ const Carousel = () => {
     return (
         <div>
             <Slider {...settings}>
-                {/* <div>
-                <Image src={slide1}
-                        class="block w-full" />
-                </div>
-                <div>   <Image src={slide2}
-                        class="block w-full" />
-                </div> */}
                 <div>
                     <Image src={slide3}
                         class="block w-full" />

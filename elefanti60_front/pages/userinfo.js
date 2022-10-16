@@ -1,7 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
-import DropdownMenu from '../components/DropdownMenu';
 import Link from 'next/link';
 import { useState, useEffect } from 'react'
 

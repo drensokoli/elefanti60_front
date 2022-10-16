@@ -1,8 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import Link from "next/link";
-import { CartContexts } from "../contexts/CartContexts";
-import Image from "next/image";
-import telefon from '../assets/telefon.jpg'
 
 const CartItem = ({ title, desc, id, productId, price, image, quantity, total, stock }) => {
 

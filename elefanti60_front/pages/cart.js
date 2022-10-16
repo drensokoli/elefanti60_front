@@ -1,13 +1,6 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import Layout from '../components/Layout';
-import Products from '../components/Products';
 import CartItem from '../components/CartItem';
-import Category from '../components/Category';
-import Carousel from '../components/Carousel';
-import { UserInfoScreen } from './userinfo';
 import { useRouter } from 'next/router';
-import { quantity } from './product/[slug]';
 import { useState, useEffect } from 'react'
 
 export default function Cart() {

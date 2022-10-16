@@ -1,11 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import Layout from '../components/Layout';
-// import Products from '../components/Products';
 import SinglePost from '../components/SinglePost';
 import Category from '../components/Category';
 import Carousel from '../components/Carousel';
-import { UserInfoScreen } from './userinfo';
 
 export const getServerSideProps = async () => {
 

@@ -1,12 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import Link from "next/link";
-import { CartContexts } from "../contexts/CartContexts";
-import Image from "next/image";
-import telefon from '../assets/telefon.jpg'
-import { quantity } from "../pages/product/[slug]";
 
 const OrderItem = ({ title, desc, id, productId, price, image, date, quantity }) => {
-    // const { products, setProducts } = useContext(CartContexts);
     return (
         <>
             <div class="flex flex-col sm:flex-row h-fit lg:w-[1100px] lg:gap-30 bg-white rounded-lg border border-gray-200 shadow-md justify-around pb-5">

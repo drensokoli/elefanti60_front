@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link';
 
-const Category = ({ id, name }) => {
+const Category = ({ name }) => {
   
   return (
     <>

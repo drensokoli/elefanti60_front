@@ -1,11 +1,6 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import Router, { useRouter } from 'next/router';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useContext } from 'react';
-import { CartContexts } from '../../contexts/CartContexts';
-import Category from '../../components/Category';
 
 export const getServerSideProps = async (context) => {
 
@@ -25,21 +20,16 @@ export const getServerSideProps = async (context) => {
     };
 }
 
-export function getId() {
-    const id = useContext(CartContexts);
-    return id;
-}
-
 export var quantity = 1;
 
 export function getQuantity(event) {
     event.preventDefault()
     quantity = document.getElementById("quantity").value;
-    } 
+}
 
 
 export default function ProductScreen({ product }) {
-    
+
     let inStock;
     if (product.stock == 0) {
         inStock = "Out of stock";
@@ -95,23 +85,21 @@ export default function ProductScreen({ product }) {
         }
 
     }
-    return (
 
+    return (
         <Layout title={product.title}>
             <div className='border-2 h-fit my-20'>
-                <div className='flex flex-row justify-around'>
+                <div className='flex flex-col md:flex-row justify-around'>
                     <div className='flex flex-col py-20'>
                         <img src={product.image} className='h-[300px]'></img>
                     </div>
                     <div className='flex flex-col py-20 w-[500px]'>
-                        <div className='flex flex-row justify-between'>
-                            <h5 class="mb-2 text-3xl md:text-5xl font-bold tracking-tight text-blue-700 ">{product.title}</h5>
-                        </div>
+                        <h5 class="mb-2 text-3xl md:text-5xl font-bold tracking-tight text-blue-700 ">{product.title}</h5>
                         <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-500 ">{product.description}</h5>
+                        <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">{inStock}</p>
 
-                        <div className='card mt-10'>
+                        <div className='card mt-10 justify-end'>
                             <div className='mb-4 flex justify-between'>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">{inStock}</p>
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Quantity</h5>
                                 <div>
                                     <form id="quantity-form" onChange={getQuantity}>

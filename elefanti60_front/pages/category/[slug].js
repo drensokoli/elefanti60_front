@@ -1,9 +1,5 @@
 import React from 'react'
 import Layout from '../../components/Layout'
-import data from '../../utils/data';
-import {useRouter} from 'next/router';
-import Link from 'next/link';
-import Image from 'next/image';
 import SinglePost from '../../components/SinglePost';
 import Category from '../../components/Category';
 

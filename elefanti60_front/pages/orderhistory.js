@@ -1,47 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import Layout from '../components/Layout';
-import Products from '../components/Products';
-import CartItem from '../components/CartItem';
-import Category from '../components/Category';
-import Carousel from '../components/Carousel';
-import { UserInfoScreen } from './userinfo';
 import { useRouter } from 'next/router';
 import OrderItem from '../components/OrderItem';
 import { useEffect, useState } from 'react';
 
-
-// export var id;
-// export const getId = () => {
-
-//     if (typeof window === "undefined") {console.log("window undefined")}
-//     else{console.log("defined")}
-//     try{
-//         id = window.localStorage.getItem('id');
-//         console.log(id, "user");
-//     }  catch(ex){
-//         console.log(ex, "error")
-//     }
-//     return id;
-// }
-
-// export const getServerSideProps = async () => {
-    
-//     const https = require("https");
-//     const agent = new https.Agent({ rejectUnauthorized: false })
-//     const productsRes = await fetch(`https://localhost:7277/api/OrderHistorys/2`, { agent });
-//     const productsData = await productsRes.json();
-    
-    
-//     return {
-//         props: {
-//             productsData,
-//         },
-//     };
-// }
-
-
-export default function OrderHistory({ productsData}) {
+export default function OrderHistory() {
     
     const router = useRouter();
     const[isLoading, setIsLoading] = useState(true);

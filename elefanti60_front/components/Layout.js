@@ -1,20 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
-import { UilUser, UilShoppingCart } from '@iconscout/react-unicons'
-// import Header from './Header'
-import Link from 'next/link'
 import { Store } from '../utils/Store'
 import { useContext } from 'react'
-import DropdownMenuItem from './DropdownMenuItem'
-import { logo } from '../assets'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import Category from './Category'
-import slide1 from '../assets/slide1.jpg'
-import slide2 from '../assets/slide2.jpg'
-import Image from 'next/image'
-import Carousel from './Carousel'
-
 
 export default function Layout({ title, children }) {
 
