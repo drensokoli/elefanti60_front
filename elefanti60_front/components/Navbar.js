@@ -64,7 +64,9 @@ const Navbar = () => {
                         </form>
 
                     </div>
+                    <div>
                       <ChangingNavItem/> 
+                    </div>
                 </div>
                 <div className='pb-2 visible sm:hidden'>
                     <form onSubmit={handleSubmit}>
