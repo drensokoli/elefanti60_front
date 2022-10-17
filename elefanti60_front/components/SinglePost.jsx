@@ -11,14 +11,14 @@ const SinglePost = ({ title, id, price, image, stock }) => {
     const router = useRouter()
     let inStock;
     if (stock == 0) {
-        inStock = "Out of stock";
+        inStock = "Nuk ka në dispozicion";
     } else {
-        inStock = "Stock: " + stock;
+        inStock = "Stoku: " + stock;
     }
     const redirect = async (event) => {
         event.preventDefault();
         if (localStorage.getItem('id') == null) {
-            alert("You're not logged in!")
+            alert("Nuk jeni të kyçur!")
             router.push("http://localhost:3000/login")
         }
         const data = {
@@ -41,13 +41,13 @@ const SinglePost = ({ title, id, price, image, stock }) => {
         console.log(response);
         try {
             if (response.ok) {
-                alert("Product added to cart succesfully")
+                alert("Produkti u shtua në shportën e blerjes me sukses!")
             }
             else if (localStorage.getItem('id') == "null") {
-                alert("You're not logged in")
+                alert("Nuk jeni të kyçur")
             }
             else {
-                alert("You can't order more of this product")
+                alert("Nuk mund të porositni më shumë nga ky produkt")
             }
         }
         catch (ex) {

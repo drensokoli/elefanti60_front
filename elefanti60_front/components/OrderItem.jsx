@@ -27,12 +27,12 @@ const OrderItem = ({ title, desc, id, productId, price, image, date, quantity })
                     <div className="flex flex-co sm:flex-row justify-between items-center sm:gap-20">
 
                         <div className="flex flex-col justify-start items-start">
-                            <h5 class=" text-l tracking-tight text-gray-900 ">Date:</h5>
+                            <h5 class=" text-l tracking-tight text-gray-900 ">Data:</h5>
                             <h5 class=" text-l tracking-tight text-gray-900 ">{theDate}</h5>
                         </div>
                         <div className="flex flex-col justify-end items-center">
-                            <h5 class=" sm:text-xl font-bold tracking-tight text-gray-600 ">Quantity: {quantity}</h5>
-                            <h5 class=" sm:text-xl font-bold tracking-tight text-gray-600 ">Total: ${price * quantity}</h5>
+                            <h5 class=" sm:text-xl font-bold tracking-tight text-gray-600 ">Sasia: {quantity}</h5>
+                            <h5 class=" sm:text-xl font-bold tracking-tight text-gray-600 ">Totali: ${price * quantity}</h5>
                         </div>
 
                     </div>

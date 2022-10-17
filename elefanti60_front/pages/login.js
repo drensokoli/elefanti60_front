@@ -57,11 +57,11 @@ export default function LoginScreen() {
                 <Image src={logo} />
               </div>
               <div>
-                <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Username" required="" />
+                <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Adresa juaj elektronike</label>
+                <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Emri i përdoruesit" required="" />
               </div>
               <div>
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your password</label>
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Fjalëkalimi juaj</label>
                 <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="" />
               </div>
               <div class="flex items-start">
@@ -69,14 +69,14 @@ export default function LoginScreen() {
                   <div class="flex items-center h-5">
                     <input id="remember" type="checkbox" value="" class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required="" />
                   </div>
-                  <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+                  <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Më mbaj mend</label>
                 </div>
+              <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kyçu në llogarinë tuaj</button>
               </div>
-              <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login to your account</button>
               <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                Not registered?
+                Nuk jeni të regjistruar?
                 <Link href="/signup">
-                  <a href="#" class="text-blue-700 hover:underline dark:text-blue-500"> Create account</a>
+                  <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Krijo llogari</a>
                 </Link>
               </div>
             </form>

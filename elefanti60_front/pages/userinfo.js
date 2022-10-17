@@ -42,31 +42,31 @@ export default function UserInfoScreen() {
                 <div className=" flex flex-col w-fit gap-3 h-fit">
                     <div className=" flex flex-col w-fit border-2 p-10 gap-3 h-fit">
                         <div className='flex flex-row justify-between'>
-                            <h1 className='text-3xl text-left text-blue-500 '>User info</h1>
+                            <h1 className='text-3xl text-left text-blue-500 '>Informata të përdoruesit</h1>
                         </div>
 
                         <div>
-                            <h1 className=''>Name:</h1>
+                            <h1 className=''>Emri:</h1>
                         <h5 className='w-[200px] sm:w-[500px]'>{userData.name}</h5>
                         </div>
                         <div>
-                            <h1 className=''>Last name:</h1>
+                            <h1 className=''>Mbiemri:</h1>
                         <h5  className='w-[200px] sm:w-[500px]t-lg'>{userData.lastName}</h5>
                         </div>
                         <div>
-                            <h1 className=''>Username:</h1>
+                            <h1 className=''>Emri i përdoruesit:</h1>
                         <h5  className='w-[200px] sm:w-[500px]t-lg'>{userData.username}</h5>
                         </div>
                         <div>
-                            <h1 className=''>Email:</h1>
+                            <h1 className=''>Adresa juaj elektronike:</h1>
                         <h5 className='w-[200px] sm:w-[500px] bog'>{userData.email} </h5>
                         </div>
                         <div>
-                            <h1 className=''>Address:</h1>
+                            <h1 className=''>Adresa:</h1>
                         <h5  className='w-[200px] sm:w-[500px] -lg'>{userData.address}</h5>
                         </div>
                         <div>
-                            <h1 className=''>Amount:</h1>
+                            <h1 className=''>Sasia:</h1>
                         <h5 className='w-[200px] sm:w-[500px] blg'> ${userData.amount}</h5>
                         </div>
                         

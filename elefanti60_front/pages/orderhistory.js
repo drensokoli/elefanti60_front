@@ -25,9 +25,9 @@ export default function OrderHistory() {
         return (
             <Layout title="Home Page">
                 <div className='flex flex-col justify-start gap-8 mt-5'>
-                    <h1 className="text-3xl text-blue-700 font-semibold">Your cart:</h1>
+                    <h1 className="text-3xl text-blue-700 font-semibold">Shporta:</h1>
                     <div className='flex flex-col justify-center items-center gap-5 mb-5'>
-                        <h3>Loading...</h3>
+                        <h3>Duke u ngarkuar...</h3>
                     </div>
                 </div>
     
@@ -56,12 +56,12 @@ export default function OrderHistory() {
     return (
         <Layout title="Home Page">
             <div className='flex flex-col justify-start gap-8 mt-5'>
-                <h1 className="text-3xl text-blue-700 font-semibold">Your past orders:</h1>
+                <h1 className="text-3xl text-blue-700 font-semibold">Porositë tuaja të kaluara:</h1>
                 <div className='flex flex-col justify-center items-center gap-5 mb-5'>
                     {allProducts}
                 </div>
             <div className='flex flex-col justify-end items-center gap-5 mb-5 '>
-                <h1 className='text-2xl font-semibold'>Total: ${total}</h1>
+                <h1 className='text-2xl font-semibold'>Totali: ${total}</h1>
             </div>
             </div>
 
