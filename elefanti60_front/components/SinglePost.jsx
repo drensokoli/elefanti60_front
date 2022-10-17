@@ -3,24 +3,32 @@ import Link from "next/link";
 import { CartContexts } from "../contexts/CartContexts";
 import { useRouter } from "next/router";
 
+//Merr id-ne e user-it
 export function getId() {
     const id = useContext(CartContexts);
     return id;
 }
+
+//Ruan nje produkt 
 const SinglePost = ({ title, id, price, image, stock }) => {
+
     const router = useRouter()
-    let inStock;
+
+    let inStock; //Kontrollon nese produkti eshte ne dispozicion 
     if (stock == 0) {
         inStock = "Nuk ka në dispozicion";
     } else {
         inStock = "Stoku: " + stock;
     }
+
+    //Kur klikohet butoni shto ne shporte, nese perdoruesi nuk eshte i kycur, e redirect-on tek faqja e login-it, ne te kunderten e dergon produktin te shporta
     const redirect = async (event) => {
         event.preventDefault();
         if (localStorage.getItem('id') == null) {
             alert("Nuk jeni të kyçur!")
             router.push("http://localhost:3000/login")
         }
+
         const data = {
             userId: localStorage.getItem('id'),
             productId: id,
@@ -38,7 +46,6 @@ const SinglePost = ({ title, id, price, image, stock }) => {
         }
 
         const response = await fetch(endpoint, options);
-        console.log(response);
         try {
             if (response.ok) {
                 alert("Produkti u shtua në shportën e blerjes me sukses!")
@@ -74,7 +81,7 @@ const SinglePost = ({ title, id, price, image, stock }) => {
 
                     </Link>
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">{inStock}</p>
-                    <button type="button" class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900 " onClick={redirect}>Add to Cart</button>
+                    <button type="button" class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900 " onClick={redirect}>Shto në shportë</button>
 
                 </div>
             </div>

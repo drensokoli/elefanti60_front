@@ -6,9 +6,10 @@ import { useState, useEffect } from 'react'
 export default function Cart() {
     
     const router = useRouter();
-    const[isLoading, setIsLoading] = useState(true);
-    const[cartData, setCartData] = useState(null);
+    const[isLoading, setIsLoading] = useState(true);  //Kontrollon nese te dhenat jane marre nga useEffect
+    const[cartData, setCartData] = useState(null);  //Ruan te dhenat e marra nga endpoint-i
    
+     //Merr produktet e porositura kur klikohet butoni checkout dhe i dergon te endpointi per te bere porosine e produkteve
      async function handleCheckout(event){
         
         event.preventDefault()
@@ -26,19 +27,17 @@ export default function Cart() {
           },
           body: jsonData
         }
-        
-        console.log(jsonData, "jsondataaaaaa")
-    
+            
         const response = await fetch(endpoint, options);
-        console.log(response,"respo")
         if(response.ok){
-            alert("Porosiau krye me sukses!")
+            alert("Porosia u krye me sukses!")
             router.push("/")
-        } else{
-            alert("Porosia mund të kryhet!")
+        } else {
+            alert("Porosia nuk mund të kryhet!")
         }
     }
-
+    
+    //Merr nga endpoint-i produktet e shportes
     useEffect(() => {
         async function fetchCartData(){
             const userId = localStorage.getItem('id');
@@ -51,6 +50,7 @@ export default function Cart() {
         }
         fetchCartData()
     }, [])
+    
     if(isLoading){
         return (
             <Layout title="Home Page">
@@ -64,9 +64,9 @@ export default function Cart() {
             </Layout >
         )
     }
-     const items = cartData.items;
-     const total = cartData.total
-     console.log(items,"itemms");
+
+    const items = cartData.items;
+    const total = cartData.total
     const allProducts = items.map((p) => (<div key={p.id}>
         <CartItem
             title={p.title}

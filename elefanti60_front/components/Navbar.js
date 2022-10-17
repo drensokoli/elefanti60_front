@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useContext } from 'react'
 import { UilUser, UilShoppingCart } from '@iconscout/react-unicons'
 import Link from 'next/link'
-import { Store } from '../utils/Store'
 import logo from '../assets/logo.png'
 import Image from 'next/image'
 import { UilSearch } from '@iconscout/react-unicons'
@@ -12,8 +11,6 @@ import ChangingNavItem from "./ChangingNavItems";
 
 const Navbar = () => {
 
-    const { state, dispatch } = useContext(Store);
-    const { cart } = state;
     const [formInput, setFormInput] = useState({})
     const [searchTerm, setSearchTerm] = useState('')
     const [products, setProducts] = useState('')

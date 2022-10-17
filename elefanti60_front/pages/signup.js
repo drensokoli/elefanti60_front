@@ -1,6 +1,5 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Layout from '../components/Layout';
-import { useState } from 'react';
 import Image from 'next/image';
 import logo from '../assets/logo.png'
 import Link from 'next/link';
@@ -8,8 +7,8 @@ import { useRouter } from 'next/router';
 
 export default function SignUpScreen() {
 
-  const Router = useRouter()
-
+  const Router = useRouter();
+   //Merr te dhenat e perdoruesit nga forma kur forma behet submit dhe i dergon te endpointi per regjistrim te user-it
   const handleSubmit = async (event) => {
     event.preventDefault()
 
@@ -37,18 +36,15 @@ export default function SignUpScreen() {
     const response = await fetch(endpoint, options);
     try {
       const result = await response.json();
-      console.log(result);
       localStorage.setItem('id', result)
-      Router.push('http://localhost:3000/')
+      Router.push('http://localhost:3000/login')
     }
     catch (ex) {
       console.log(ex)
       alert("Ky emër përdoruesi është marrë");
     }
-
   }
 
-  const newLocal = '/login';
   return (
     <Layout title="Sign Up" >
       <div className='h-screen mb-20'>
@@ -99,9 +95,7 @@ export default function SignUpScreen() {
                   <label for="amount" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Sasia</label>
                 </div>
               </div>
-              <Link href="/login">
                 <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Regjistrohu</button>
-              </Link>
               <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                 Posedon llogari?
                 <Link href="/login">

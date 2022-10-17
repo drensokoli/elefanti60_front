@@ -4,7 +4,8 @@ import dateFormat from 'dateformat';
 
 
 const OrderItem = ({ title, desc, id, productId, price, image, date, quantity }) => {
-    var theDate = dateFormat(date, 'mmm dS, yyyy');
+
+    var theDate = dateFormat(date, 'dd/mm/yyyy'); //Formaton daten 
     return (
         <>
             <div class="flex flex-col sm:flex-row h-fit md:w-[700px] lg:w-[1100px] lg:gap-30 bg-white rounded-lg border border-gray-200 shadow-md justify-around pb-5">

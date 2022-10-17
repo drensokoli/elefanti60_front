@@ -4,33 +4,19 @@ import { CartContexts } from "../contexts/CartContexts";
 import LoginComponent from "./LoginComponent";
 import { UilUser, UilShoppingCart } from '@iconscout/react-unicons';
 import DropdownMenuItem from "./DropdownMenuItem";
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import Link from "next/link";
 
 
 export default function ChangingNavItem() {
-    const Router = useRouter();
     const [component, setComponent] = useState()
     var id = useContext(CartContexts);
-    const getId = () => {
-
-        try {
-            id = localStorage.getItem('id');
-            console.log(id, "user");
-
-        } catch (ex) {
-            console.log(ex, "error")
-        }
-        return id;
-    }
 
     const clearLocalStorage = () => {
         try {
             localStorage.setItem('id', null);
-            console.log(id, "user");
         } catch (ex) {
-            console.log(ex, "error")
+            console.log(ex)
         }
     }
     const login = (<LoginComponent />)
@@ -60,13 +46,9 @@ export default function ChangingNavItem() {
             </div>
         </div>)
 
-
-
-
-
+    //Varesisht nese perdoruesi eshte logged in i shfaq ose "Kycu" ose i shfaq ikonen per shporte dhe userinfo
     var userEmpty = id == "null";
     userEmpty ? useEffect(() => setComponent(login), []) : useEffect(() => setComponent(dropdown), [])
-    console.log(id, "idd")
     return (
         <>
             <div>

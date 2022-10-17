@@ -6,8 +6,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function LoginScreen() {
+
   const Router = useRouter()
 
+  //Merr te dhenat e perdoruesit nga forma kur forma behet submit dhe i dergon te endpointi per login te user-it
   const handleSubmit = async (event) => {
     event.preventDefault()
 
@@ -28,13 +30,11 @@ export default function LoginScreen() {
       },
       body: jsonData,
     }
-    console.log(jsonData, "jsondataaaaaa")
 
     const response = await fetch(endpoint, options);
 
     try {
       const result = await response.json();
-      console.log(result);
       localStorage.setItem('id', result)
       Router.push('/')
     }

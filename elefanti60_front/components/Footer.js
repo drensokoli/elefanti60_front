@@ -13,8 +13,7 @@ const Footer = () => {
                         <a href="#" class="mr-4 hover:underline md:mr-6 ">Për ne</a>
                     </li>
                     <li>
-                        <a href="#" class="mr-4 hover:underline md:mr-6">Politika e privatësisë
-</a>
+                        <a href="#" class="mr-4 hover:underline md:mr-6">Politika e privatësisë</a>
                     </li>
                     <li>
                         <a href="#" class="hover:underline">Kontakti</a>

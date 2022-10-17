@@ -1,14 +1,13 @@
 import Layout from '../components/Layout';
-import { useRouter } from 'next/router';
 import OrderItem from '../components/OrderItem';
 import { useEffect, useState } from 'react';
 
 export default function OrderHistory() {
     
-    const router = useRouter();
-    const[isLoading, setIsLoading] = useState(true);
-    const[orderedData, setOrderedData] = useState(null);
+    const[isLoading, setIsLoading] = useState(true); //Kontrollon nese te dhenat jane marre nga useEffect
+    const[orderedData, setOrderedData] = useState(null); //Ruan te dhenat e marra nga endpoint-i
 
+    //Merr te dhenat e shportes te user-it nga endpointi
     useEffect(() => {
         async function fetchCartData(){
             const userId = localStorage.getItem('id');
@@ -21,6 +20,7 @@ export default function OrderHistory() {
         }
         fetchCartData()
     }, [])
+
     if(isLoading){
         return (
             <Layout title="Home Page">
@@ -34,9 +34,11 @@ export default function OrderHistory() {
             </Layout >
         )
     }
-     const items = orderedData.orderedItems;
-     const total = orderedData.total
-     console.log(items,"itemms");
+    
+    const items = orderedData.orderedItems; 
+    const total = orderedData.total;
+    
+    //I ruan produktet e shportes si OrderItems
     const allProducts = items.map((p) => (<div key={p.id}>
         <OrderItem
             total = {p.total}

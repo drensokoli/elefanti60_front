@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Router, { useRouter } from 'next/router';
 
+//Merr produktin nga endpointi 
 export const getServerSideProps = async (context) => {
 
     const { params } = context;
@@ -22,6 +23,7 @@ export const getServerSideProps = async (context) => {
 
 export var quantity = 1;
 
+//Merr sasine nga forma 
 export function getQuantity(event) {
     event.preventDefault()
     quantity = document.getElementById("quantity").value;
@@ -30,6 +32,7 @@ export function getQuantity(event) {
 
 export default function ProductScreen({ product }) {
 
+    //Kontrollon nese ka produkti eshte ne dispozicion 
     let inStock;
     if (product.stock == 0) {
         inStock = "Nuk ka në dispozicion!";
@@ -37,7 +40,6 @@ export default function ProductScreen({ product }) {
         inStock = "Stoku: " + product.stock;
     }
 
-    const router = useRouter();
     const { query } = useRouter();
     const { path } = query;
     if (!product) {
@@ -63,11 +65,6 @@ export default function ProductScreen({ product }) {
         }
 
         const response = await fetch(endpoint, options);
-        console.log(response, "response");
-        console.log(quantity, "quantity");
-        console.log(product.stock, "stock");
-        console.log(jsonData, "jsondaata")
-        console.log(localStorage.getItem('id') == "null", "isnull")
 
         try {
             if (response.ok) {

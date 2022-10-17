@@ -1,13 +1,13 @@
 import React from 'react'
 import Layout from '../../components/Layout'
-import { useRouter } from 'next/router';
 import SinglePost from '../../components/SinglePost';
 import Category from '../../components/Category';
 
+
+//Merr produktet dhe kategorite nga endpoint-et
 export async function getServerSideProps(context) {
 
   const { query } = context;
-
   const https = require("https");
   const myUrl = `https://localhost:7277/api/Products/Title/${query.q}`;
   const agent = new https.Agent({ rejectUnauthorized: false })
@@ -26,7 +26,6 @@ export async function getServerSideProps(context) {
 
 export default function CategoryScreen({ productsData, categoriesData }) {
   
-  const Router = useRouter();
 
   const allProducts = productsData.map((p) => (<div key={p.id}>
     <SinglePost
@@ -46,8 +45,7 @@ export default function CategoryScreen({ productsData, categoriesData }) {
         id={c.id} />
     </div>));
 
-console.log(productsData.length == 0 , "products data test")
-
+  //Nese nuk ka ndonje produkt shfaq "NO PRODUCTS FOUND"
   if (productsData.length == 0) {
     return (
       <Layout title="Home Page">
@@ -60,7 +58,6 @@ console.log(productsData.length == 0 , "products data test")
         </div>
       </Layout >
     )
-    //  Router.push("/");
   } else {
     return (
       <Layout title="Home Page">

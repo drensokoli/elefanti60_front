@@ -1,20 +1,14 @@
 import React from 'react'
-import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
-import Link from 'next/link';
 import { useState, useEffect } from 'react'
 
 
 export default function UserInfoScreen() {
 
-    const [isLoading, setIsLoading] = useState(true);
-    const [userData, setUserData] = useState(null);
-    const router = useRouter();
-    const logout = () => {
-        localStorage.setItem("id", null);
-        router.push("/")
-    }
-
+    const [isLoading, setIsLoading] = useState(true); //Kontrollon nese te dhenat jane marre nga useEffect
+    const [userData, setUserData] = useState(null); //Ruan te dhenat e marra nga endpoint-i
+    
+    //Merr te dhenat e user-it nga endpointi 
     useEffect(() => {
         async function fetchUserData() {
             const userId = localStorage.getItem('id');

@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 const CartItem = ({ title, desc, id, productId, price, image, quantity, total, stock }) => {
 
     const router = useRouter();
+    //Largon cart item-in nga shporta
     const removeCartItem = async () => {
         const response = await fetch(`https://localhost:7277/api/CartItems/`+ id, {
             method: 'DELETE'
@@ -13,7 +14,7 @@ const CartItem = ({ title, desc, id, productId, price, image, quantity, total, s
         router.reload();
 
     }
-    let inStock;
+    let inStock; //Kontrollon nese produkti eshte ne dispozicion 
     if (stock == 0) {
         inStock = "Nuk gjendet në dispozicion";
     }
@@ -21,7 +22,6 @@ const CartItem = ({ title, desc, id, productId, price, image, quantity, total, s
 
         inStock = "Stoku: " + stock;
     }
-    console.log(stock, "stock test");
 
     return (
         <>

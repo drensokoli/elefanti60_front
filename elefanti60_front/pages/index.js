@@ -3,6 +3,7 @@ import SinglePost from '../components/SinglePost';
 import Category from '../components/Category';
 import Carousel from '../components/Carousel';
 
+//Merr produktet dhe kategorite nga endpoint-et
 export const getServerSideProps = async () => {
 
   const https = require("https");
@@ -11,7 +12,6 @@ export const getServerSideProps = async () => {
   const productsData = await productsRes.json();
   const categoriesRes = await fetch('https://localhost:7277/api/Categories', { agent });
   const categoriesData = await categoriesRes.json();
-
 
   return {
     props: {
@@ -24,6 +24,7 @@ export const getServerSideProps = async () => {
 
 export default function Home({ productsData, categoriesData }) {
 
+  //I ruan produktet si SinglePost
   const allProducts = productsData.map((p) => (<div key={p.id}><SinglePost
     title={p.title}
     desc={p.description}
@@ -34,6 +35,7 @@ export default function Home({ productsData, categoriesData }) {
     category={p.category} />
   </div>));
 
+  //I ruan kategorite si Category 
   const allCategories = categoriesData.map((c) => (
     <div key={c.id}>
       <Category
