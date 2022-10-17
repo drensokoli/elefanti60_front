@@ -19,18 +19,20 @@ export default function SignUpScreen() {
   const username = useRef()
   const email = useRef()
   const password = useRef()
+  const repeat_password = useRef()
   const adress = useRef()
   const cardnumber = useRef()
   const Router = useRouter()
 
 
   const handleClick = () => {
-    if (name.current.value && lastname.current.value && username.current.value && email.current.value && password.current.value && adress.current.value && cardnumber.current.value) {
+    if (name.current.value && lastname.current.value && username.current.value && email.current.value && password.current.value && repeat_password.current.value && adress.current.value && cardnumber.current.value) {
       localStorage.setItem('name', name.current.value)
       localStorage.setItem('lastname', lastname.current.value)
       localStorage.setItem('username', username.current.value)
       localStorage.setItem('email', email.current.value)
       localStorage.setItem('password', password.current.value)
+      localStorage.setItem('password', repat_password.current.value)
       localStorage.setItem('adress', adress.current.value)
       localStorage.setItem('cardnumber', cardnumber.current.value)
 
@@ -38,6 +40,17 @@ export default function SignUpScreen() {
       alert('Account created sucessfully')
 
       console.log(name, lastname, username, email, password, adress, cardnumber)
+    }
+    if(password.current.value != repeat_password.current.value){
+      swal({
+        title: "Passwords do not match!",
+        text: "You need to write the same passwoord as above!",
+        icon: "warning",
+        timer: 2400,
+        buttons: false
+    });
+    setFail(true)
+    return
     }
   }
 
@@ -49,6 +62,7 @@ export default function SignUpScreen() {
       lastname: event.target.lastname.value,
       username: event.target.username.value,
       password: event.target.password.value,
+      repeat_password: event.target.repeat_password.value,
       email: event.target.email.value,
       address: event.target.address.value,
       cardnumber: event.target.cardnumber.value,
