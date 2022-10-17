@@ -16,7 +16,7 @@ const CartItem = ({ title, desc, id, productId, price, image, quantity, total, s
     }
     let inStock; //Kontrollon nese produkti eshte ne dispozicion 
     if (stock == 0) {
-        inStock = "Nuk gjendet në dispozicion";
+        inStock = "Nuk gjendet nÃ« dispozicion";
     }
     else {
 
@@ -32,7 +32,7 @@ const CartItem = ({ title, desc, id, productId, price, image, quantity, total, s
                     </div>
                 </div>
 
-                <div class="flex flex-col sm:flex-row h-fit md:w-[700px] lg:w-[1000px] lg:gap-30 bg-white rounded-lg border border-gray-200 shadow-md justify-around pb-5">
+                <div class="flex flex-col sm:flex-row h-fit md:w-[700px] lg:w-[90%] lg:gap-30 bg-white rounded-lg border border-gray-200 shadow-md justify-around pb-5">
                     <div className='flex flex-col items-center justify-center p-10 justify-items-center h-40'>
                         <Link href={`/product/${productId}`}>
                             <a className="h-40 w-40 py-10">

@@ -85,32 +85,32 @@ export default function ProductScreen({ product }) {
 
     return (
         <Layout title={product.title}>
-            <div className='border-2 h-fit my-20'>
-                <div className='flex flex-col lg:flex-row justify-between'>
-                    <div className='flex flex-row justify-center p-10'>
-                        <img src={product.image} className='h-[300px]'></img>
-                    </div>
-                    <div className='flex flex-col p-10 lg:w-[500px] justify-center'>
-                        <h5 class="mb-2 text-3xl md:text-5xl font-bold tracking-tight text-blue-700 ">{product.title}</h5>
-                        <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-500 ">{product.description}</h5>
-                        <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">{inStock}</p>
+            <div className='flex flex-col justify-center items-center'>
+                <div className='border-2 h-fit lg:w-[90%] my-20'>
+                    <div className='flex flex-col lg:flex-row justify-around'>
+                        <div className='flex flex-row justify-center items-center'>
+                            <img src={product.image} className='w-[250px] sm:w-auto md:h-[300px]'></img>
+                        </div>
+                        <div className='flex flex-col p-10 lg:w-[500px] justify-center'>
+                            <h5 class="mb-2 text-3xl md:text-5xl font-bold tracking-tight text-blue-700 ">{product.title}</h5>
+                            <h5 class="mb-2 text-xl md:text-3xl font-bold tracking-tight text-gray-500 ">{product.description}</h5>
+                            <p className=" font-normal text-gray-700 dark:text-gray-500">{inStock}</p>
 
-                        <div className='card mt-10 justify-end'>
-                            <div className='mb-4 flex justify-between'>
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Sasia</h5>
-                                <div>
-                                    <form id="quantity-form" onChange={getQuantity}>
-                                        <div className='h-10 w-12 font-normal text-xl'>
+                            <div className='card mt-5 justify-start'>
+                                <div className='mb-4 flex justify-between'>
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Sasia</h5>
+                                    <div>
+                                        <div className='h-10 w-12 font-normal text-xl mr-6'>
                                             <input type="number" defaultValue={1} name="quantity" min={1} max={product.stock} id="quantity" class="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-md p-2" required />
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
+                                <div className='mb-2 flex justify-between'>
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Çmimi</h5>
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500" >${product.price}</h5>
+                                </div>
+                                <button className='text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-full' onClick={addToCartHandler}>Shto në shportën e blerjes</button>
                             </div>
-                            <div className='mb-2 flex justify-between'>
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Totali</h5>
-                                <h5 class="mb-2 text-4xl font-medium tracking-tight text-gray-900" >{product.total}</h5>
-                            </div>
-                            <button className='text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-full' onClick={addToCartHandler}>Shto në shportën e blerjes</button>
                         </div>
                     </div>
                 </div>
