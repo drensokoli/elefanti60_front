@@ -2,9 +2,18 @@ import React from "react";
 import Link from "next/link";
 import { UilTimesCircle } from '@iconscout/react-unicons'
 import moment from 'moment';
+import { useRouter } from "next/router";
 
 const CartItem = ({ title, desc, id, productId, price, image, quantity, total, stock }) => {
 
+    const router = useRouter();
+    const removeCartItem = async () => {
+        const response = await fetch(`https://localhost:7277/api/CartItems/`+ id, {
+            method: 'DELETE'
+        })
+        router.reload();
+
+    }
     let inStock;
     if (stock == 0) {
         inStock = "Out of stock";
@@ -20,7 +29,7 @@ const CartItem = ({ title, desc, id, productId, price, image, quantity, total, s
             <div>
                 <div className="relative">
                     <div className="absolute right-1 top-1">
-                        <UilTimesCircle />
+                    <div onClick={removeCartItem}><UilTimesCircle /></div>
                     </div>
                 </div>
 
