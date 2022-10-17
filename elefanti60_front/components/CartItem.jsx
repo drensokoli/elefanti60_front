@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { UilTimesCircle } from '@iconscout/react-unicons'
+import moment from 'moment';
 
 const CartItem = ({ title, desc, id, productId, price, image, quantity, total, stock }) => {
 
@@ -19,7 +20,7 @@ const CartItem = ({ title, desc, id, productId, price, image, quantity, total, s
             <div>
                 <div className="relative">
                     <div className="absolute right-1 top-1">
-                    <UilTimesCircle />
+                        <UilTimesCircle />
                     </div>
                 </div>
 
@@ -40,12 +41,14 @@ const CartItem = ({ title, desc, id, productId, price, image, quantity, total, s
 
                         </Link>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-500">{desc}</p>
-                        <div className="flex flex-row justify-between items-end gap-20">
-                            <div className="flex flex-col justify-center items-start">
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">{inStock}</p>
+                        <div className="flex flex-row justify-between items-start sm:gap-20">
+                            <div className="flex flex-col justify-center items-start">
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">Quantity: {quantity}</p>
                             </div>
-                            <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Total: ${total}</h5>
+                            <div>
+                                <h5 class=" text-xl font-bold tracking-tight text-gray-700 ">Total: ${total}</h5>
+                            </div>
                         </div>
 
                     </div>
