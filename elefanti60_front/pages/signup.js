@@ -105,7 +105,7 @@ export default function SignUpScreen() {
               <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                 Posedon llogari?
                 <Link href="/login">
-                  <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Kyçu</a>
+                  <a href="#" class="text-blue-700 hover:underline dark:text-blue-500"> Kyçu</a>
                 </Link>
               </div>
             </form>

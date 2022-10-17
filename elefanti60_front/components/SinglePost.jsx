@@ -61,7 +61,7 @@ const SinglePost = ({ title, id, price, image, stock }) => {
                 <div className='flex flex-col items-center justify-center p-10 justify-items-center'>
                     <Link href={`/product/${id}`}>
                         <a className="h-40">
-                            <img src={image} alt="" />
+                            <img src={image} alt="" className="w-40"/>
                         </a>
                     </Link>
                 </div>
