@@ -29,7 +29,7 @@ const OrderItem = ({ title, desc, id, productId, price, image, date, quantity })
                         </div>
                         <div className="flex flex-col justify-end items-center">
                                 <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Quantity: {quantity}</h5>
-                            <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Total: {price*quantity}</h5>
+                            <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Total: ${price*quantity}</h5>
                         </div>
 
                     </div>
