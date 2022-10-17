@@ -27,11 +27,8 @@ export default function ChangingNavItem() {
 
     const clearLocalStorage = () => {
         try {
-            localStorage.clear(getId(id));
+            localStorage.setItem('id', null);
             console.log(id, "user");
-
-
-
         } catch (ex) {
             console.log(ex, "error")
         }
@@ -65,7 +62,7 @@ export default function ChangingNavItem() {
 
 
 
-    var userEmpty = id == null;
+    var userEmpty = id == "null";
     userEmpty ? useEffect(() => setComponent(login), []) : useEffect(() => setComponent(dropdown), [])
     console.log(id, "idd")
     return (
