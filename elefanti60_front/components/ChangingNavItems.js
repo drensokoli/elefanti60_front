@@ -40,10 +40,12 @@ export default function ChangingNavItem() {
                 <DropdownMenuItem option={<UilUser />} className='hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow'>
                     <div className='z-10 shadow-2xl	 bg-white relative right-12 top-1 border-2 border-violet'>
                         <div className="divide-y divide-slate-200  py-1 text-sm text-blue-500 dark:text-gray-400 text-center" aria-labelledby="dropdownNavbarButton">
-                            <a href='/userinfo' className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Profile</a>
-                            <a href='/orderhistory' className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Order History</a>
+                            <a href='/userinfo' className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profili im</a>
+                            <a href='/orderhistory' className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Historia ime e porosive</a>
+                            <a href="/">
+                                <p className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onClick={clearLocalStorage}>Ç'kyqu</p>
+                            </a>
                             <a href='/'>
-                                <p className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onClick={clearLocalStorage}>Log Out</p>
                             </a>
                         </div>
                     </div>

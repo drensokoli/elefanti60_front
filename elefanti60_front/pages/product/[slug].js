@@ -32,9 +32,9 @@ export default function ProductScreen({ product }) {
 
     let inStock;
     if (product.stock == 0) {
-        inStock = "Out of stock";
+        inStock = "Nuk ka në dispozicion!";
     } else {
-        inStock = "Stock: " + product.stock;
+        inStock = "Stoku: " + product.stock;
     }
 
     const router = useRouter();
@@ -71,13 +71,13 @@ export default function ProductScreen({ product }) {
 
         try {
             if (response.ok) {
-                alert("Product added to cart succesfully")
+                alert("Produkti u shtua në shportën e blerjes me sukses!")
             }
             else if (localStorage.getItem('id') == "null") {
-                alert("You're not logged in")
+                alert("Nuk jeni i kyçur")
             }
             else {
-                alert("You can't order more of this product")
+                alert("Nuk mund të porositni më shumë nga ky produkt!")
             }
         }
         catch (ex) {
@@ -98,9 +98,9 @@ export default function ProductScreen({ product }) {
                         <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-500 ">{product.description}</h5>
                         <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">{inStock}</p>
 
-                        <div className='card mt-10 justify-between'>
-                            <div className='mb-4 flex flex-row justify-between'>
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Quantity</h5>
+                        <div className='card mt-10 justify-end'>
+                            <div className='mb-4 flex justify-between'>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Sasia</h5>
                                 <div>
                                     <form id="quantity-form" onChange={getQuantity}>
                                         <div className='h-10 w-12 font-normal text-xl'>
@@ -110,10 +110,10 @@ export default function ProductScreen({ product }) {
                                 </div>
                             </div>
                             <div className='mb-2 flex justify-between'>
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Total</h5>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Totali</h5>
                                 <h5 class="mb-2 text-4xl font-medium tracking-tight text-gray-900" >{product.total}</h5>
                             </div>
-                            <button className='text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-full' onClick={addToCartHandler}>Add to cart</button>
+                            <button className='text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-full' onClick={addToCartHandler}>Shto në shportën e blerjes</button>
                         </div>
                     </div>
                 </div>

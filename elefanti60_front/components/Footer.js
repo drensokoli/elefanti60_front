@@ -10,18 +10,19 @@ const Footer = () => {
                 </a>
                 <ul class="flex flex-wrap items-center mb-6 lg:mb-0 text-sm text-gray-300">
                     <li>
-                        <a href="#" class="mr-4 hover:underline md:mr-6 ">About us</a>
+                        <a href="#" class="mr-4 hover:underline md:mr-6 ">Për ne</a>
                     </li>
                     <li>
-                        <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                        <a href="#" class="mr-4 hover:underline md:mr-6">Politika e privatësisë
+</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:underline">Contact</a>
+                        <a href="#" class="hover:underline">Kontakti</a>
                     </li>
                 </ul>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 text-center dark:text-gray-400">© 2022 Elefanti60. All Rights Reserved.
+            <span class="block text-sm text-gray-500 text-center dark:text-gray-400">© 2022 Elefanti60. Të gjitha të drejtat e rezervuara.
             </span>
         </footer>
 

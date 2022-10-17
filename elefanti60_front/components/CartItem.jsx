@@ -13,14 +13,13 @@ const CartItem = ({ title, desc, id, productId, price, image, quantity, total, s
         router.reload();
 
     }
-
     let inStock;
     if (stock == 0) {
-        inStock = "Out of stock";
+        inStock = "Nuk gjendet në dispozicion";
     }
     else {
 
-        inStock = "Stock: " + stock;
+        inStock = "Stoku: " + stock;
     }
     console.log(stock, "stock test");
 
@@ -50,12 +49,14 @@ const CartItem = ({ title, desc, id, productId, price, image, quantity, total, s
 
                         </Link>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-500">{desc}</p>
-                        <div className="flex flex-row justify-between items-end gap-20">
-                            <div className="flex flex-col justify-center items-start">
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">{inStock}</p>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">Quantity: {quantity}</p>
+                        <div className="flex flex-row justify-between items-start sm:gap-20">
+                            <div className="flex flex-col justify-center items-start">
+                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-500">Sasia: {quantity}</p>
                             </div>
-                            <h5 class=" text-xl font-bold tracking-tight text-gray-900 ">Total: ${total}</h5>
+                            <div>
+                                <h5 class=" text-xl font-bold tracking-tight text-gray-700 ">Totali: ${total}</h5>
+                            </div>
                         </div>
 
                     </div>
