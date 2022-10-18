@@ -48,10 +48,11 @@ export default function ProductScreen({ product }) {
 
     const addToCartHandler = async (event) => {
         event.preventDefault();
+
         const data = {
             userId: localStorage.getItem('id'),
             productId: product.id,
-            quantity: quantity,
+            quantity: quantity
         }
 
         const jsonData = JSON.stringify(data);
@@ -101,7 +102,11 @@ export default function ProductScreen({ product }) {
                                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 ">Sasia</h5>
                                     <div>
                                         <div className='h-10 w-12 font-normal text-xl mr-6'>
-                                            <input type="number" defaultValue={1} name="quantity" min={1} max={product.stock} id="quantity" class="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-md p-2" required />
+                                            <form id="quantity-form" onChange={getQuantity}>
+                                                <div className='h-10 w-12 font-normal text-xl'>
+                                                    <input type="number" defaultValue={1} name="quantity" min={1} max={product.stock} id="quantity" class="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-md p-2" required />
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
