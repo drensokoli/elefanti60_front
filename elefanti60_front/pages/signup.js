@@ -36,8 +36,8 @@ export default function SignUpScreen() {
     const response = await fetch(endpoint, options);
     try {
       const result = await response.json();
-      localStorage.setItem('id', result)
-      Router.push('http://localhost:3000/login')
+      localStorage.setItem('id', result.id)
+      Router.push('http://localhost:3000')
     }
     catch (ex) {
       console.log(ex)
